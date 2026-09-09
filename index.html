@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sovereign — Political Sandbox | Free Browser Strategy Game</title>
-<meta name="description" content="Sovereign is a free geopolitical strategy game that runs in your browser. Lead any of 204 countries: set tax, welfare and monetary policy, run a central bank, manage 1,198 named cities, negotiate trade, and watch a production-function economy respond month by month.">
+<meta name="description" content="Sovereign is a free geopolitical strategy game that runs in your browser. Lead any of 204 countries: set tax, welfare and monetary policy, run a central bank, manage 1,198 named cities, negotiate trade, and watch a production-function economy respond month by month. Play the Soviet Union, East Germany or North Vietnam in the 1970 and 1985 scenarios.">
 <meta name="google-site-verification" content="61QPBMs9Gb_oGkLkvaNkU-z55NRidYqWhkEL3-Aricc">
 <link rel="canonical" href="https://thenicedoctor.github.io/">
 <meta name="author" content="thenicedoctor">
@@ -44,7 +44,10 @@
 {"@type":"Question","name":"Is Sovereign free to play?","acceptedAnswer":{"@type":"Answer","text":"Yes. Sovereign is free, needs no account and no installation. It is a single HTML file that runs entirely in your browser."}},
 {"@type":"Question","name":"Does Sovereign work offline?","acceptedAnswer":{"@type":"Answer","text":"Yes. Once the page has loaded, the whole simulation runs locally in your browser. Nothing is sent to a server, and saved games are stored on your own device."}},
 {"@type":"Question","name":"How many countries can you play in Sovereign?","acceptedAnswer":{"@type":"Answer","text":"All 204 entities on the map, covering every UN member state, both observer states, and nine additional scenario entities. Each has named cities and its own starting economy."}},
-{"@type":"Question","name":"Is Sovereign a realistic economic simulation?","acceptedAnswer":{"@type":"Answer","text":"It uses recognisable textbook relationships — a Cobb-Douglas production function, a Taylor-type monetary policy rule, Okun's law and an expectations-augmented Phillips curve — but every coefficient is chosen for playability. It is a game, not a forecasting model, and no figure in it is a statistic about a real country."}}]}]}
+{"@type":"Question","name":"Is Sovereign a realistic economic simulation?","acceptedAnswer":{"@type":"Answer","text":"It uses recognisable textbook relationships — a Cobb-Douglas production function, a Taylor-type monetary policy rule, Okun's law and an expectations-augmented Phillips curve — but every coefficient is chosen for playability. It is a game, not a forecasting model, and no figure in it is a statistic about a real country."}},
+{"@type":"Question","name":"Can you play as the Soviet Union in Sovereign?","acceptedAnswer":{"@type":"Answer","text":"Yes. Starting in 1970 or 1985 puts the Soviet Union on the map as a single state covering fifteen present-day countries, with Moscow, Leningrad, Sverdlovsk and Alma-Ata among its cities. Yugoslavia and Czechoslovakia appear in the same eras, and 2000 has Serbia and Montenegro."}},
+{"@type":"Question","name":"Can you play as East Germany?","acceptedAnswer":{"@type":"Answer","text":"Yes. In the 1970 and 1985 scenarios Germany is divided into East and West Germany, each a separate playable country with its own territory cut along the inner-German border. Vietnam and Yemen are divided the same way. From 2000 onward all three are unified."}},
+{"@type":"Question","name":"What years can you start in?","acceptedAnswer":{"@type":"Answer","text":"1970, 1985, 2000 or the present day. Each era rebuilds the world with the states, prices, trade barriers and monetary arrangements of that period, including fixed exchange rates in 1970 and independent central banks by 2000."}}]}]}
 </script>
 
 <style>
@@ -207,6 +210,7 @@ footer a{color:var(--muted)}
   <p class="lede">An era does not just change the date. It rebuilds the world with the states, prices, trade barriers and monetary arrangements of the period.</p>
   <div class="grid">
    <div class="card"><h3>The states of the period</h3><p>Start in 1970 and the <b>Soviet Union</b> covers fifteen present-day countries as one state, alongside <b>Yugoslavia</b> and <b>Czechoslovakia</b>. Bangladesh, the UAE and Zimbabwe do not exist yet. Sri Lanka is Ceylon, Burkina Faso is Upper Volta, and the Soviet cities are Leningrad, Sverdlovsk and Alma-Ata.</p></div>
+   <div class="card"><h3>Divided countries</h3><p>Lead <b>East Germany</b> or <b>West Germany</b>, <b>North</b> or <b>South Vietnam</b>, <b>North</b> or <b>South Yemen</b> — each a separate country with its own map shape, cut along the border of the period. East Berlin, Leipzig and Dresden on one side; West Berlin, Hamburg and Munich on the other. Vietnam is divided at the 17th parallel. By 1985 Vietnam is whole again; by 2000 all three are.</p></div>
    <div class="card"><h3>The economics of the period</h3><p>1970 runs on Bretton Woods pegs, high tariffs, heavy capital controls and central banks that answer to governments. By 2000 you get open trade, independent banks and explicit inflation targets. The productivity frontier moves with the era, so catching up in 1970 means catching up to 1970.</p></div>
   </div>
   <p class="caveat" style="margin-top:26px">A scenario, not a historical atlas. Territory is approximated by grouping present-day borders, so the internal borders of the period are not drawn and partitioned states are left unified. No border or name here is a comment on any territorial dispute.</p>
@@ -228,6 +232,9 @@ footer a{color:var(--muted)}
   <details><summary>Does it run on a phone?</summary><p>It does, and the layout adapts, but the interface has a lot of panels and is considerably more comfortable on a tablet or a laptop.</p></details>
   <details><summary>Are the country statistics real?</summary><p>Starting conditions are rough, hand-set scenario values in the right order of magnitude, not current official statistics. City names are real places; the crime, budget and development figures attached to them are invented gameplay indices. The map's borders are a scenario simplification and are not a statement about sovereignty or recognition.</p></details>
   <details><summary>Can I play a country that isn't on the list?</summary><p>Every UN member state, both observer states and nine further scenario entities are playable — 204 in total. Select any of them on the map and choose <b>Play as</b>.</p></details>
+  <details><summary>Can you play as the Soviet Union?</summary><p>Yes. Start in 1970 or 1985 and the Soviet Union is on the map as a single state covering fifteen present-day countries, with Moscow, Leningrad, Sverdlovsk and Alma-Ata among its cities. Yugoslavia and Czechoslovakia are there too, and 2000 has Serbia and Montenegro.</p></details>
+  <details><summary>Can you play as East Germany?</summary><p>Yes. In 1970 and 1985 Germany is divided into East and West, each a separate country with its own territory cut along the inner-German border. Vietnam and Yemen are divided in the same way. From 2000 onward all three are unified.</p></details>
+  <details><summary>How accurate are the historical borders?</summary><p>The dividing lines are hand-fitted from well-known geography, not surveyed boundary data, over map outlines that are themselves simplified. Each piece is checked against the historical land area when the game is built — West and East Germany come out within 4%, the two Vietnams within 3%. It is a playable scenario, not a historical atlas, and no border or name in it is a comment on any territorial dispute.</p></details>
  </div>
 </section>
 
