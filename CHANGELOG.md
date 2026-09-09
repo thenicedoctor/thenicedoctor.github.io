@@ -4,6 +4,14 @@ Versions are the save-format version (`S.version`). Each is produced by its own 
 the previous version's output, and each bumps `newGame`, `validSave` and `migrateSave` together so
 older saves keep loading.
 
+## v10 — Repeatable debt relief
+
+- Relief operations no longer make you wait between them. Renegotiating maturities, concessional
+  refinancing and sovereign restructuring can be used as often as you can afford the political
+  capital; creditors no longer need time to digest one before the next.
+- The crisis protection an operation grants is unchanged, as are its costs and effects.
+- A save carrying a leftover cooldown is migrated clear, and rejected if it still has one.
+
 ## v9 — Divided countries
 
 - **Germany, Vietnam and Yemen are split where they were divided.** In 1970 you can lead West or
