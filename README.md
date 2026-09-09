@@ -9,13 +9,18 @@ diplomacy and defence — simulated month by month.
 
 ## How it is built
 
-The game is one HTML file. It is never hand-edited: each version is a Python build script that does
-exact-string replacements against the previous version and asserts every anchor, plus an addon JS
-file that layers new behaviour by wrapping existing functions. This site is assembled the same way
-by `build-site.py`.
+The game is one HTML file. It is never hand-edited. Each version is produced by a Python build
+script that does exact-string replacements against the previous version and asserts every anchor,
+plus an addon JS file that layers new behaviour by wrapping the existing functions. This site is
+assembled from the game build the same way.
 
-Engine invariants are covered by Node test suites (`check-game`, `check-v3`, `check-v4`,
-`check-v5`, `check-v6`) that run the game in a `vm` sandbox against a fake DOM.
+Engine invariants are covered by Node test suites that run the game in a `vm` sandbox against a
+fake DOM — catalogue coverage, the production-function identity, growth accounting, the central
+bank's reaction function, Okun's law, trade flows, save migration from every earlier version, and a
+fifty-year stability run in each difficulty mode.
+
+This repository holds the published site only; the build scripts and test suites live alongside the
+game source.
 
 ## Modelling limits
 
