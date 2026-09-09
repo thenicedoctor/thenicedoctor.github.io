@@ -1,0 +1,2847 @@
+{
+  "FJI": {
+    "name": "Fiji",
+    "cities": [
+      "Suva",
+      "Lautoka",
+      "Nadi",
+      "Labasa",
+      "Ba",
+      "Levuka"
+    ],
+    "iso2": "FJ",
+    "flag": "🇫🇯",
+    "kind": "cities and settlements"
+  },
+  "TZA": {
+    "name": "Tanzania",
+    "cities": [
+      "Dar es Salaam",
+      "Dodoma",
+      "Mwanza",
+      "Arusha",
+      "Mbeya",
+      "Zanzibar City"
+    ],
+    "iso2": "TZ",
+    "flag": "🇹🇿",
+    "kind": "cities and settlements"
+  },
+  "ESH": {
+    "name": "Western Sahara",
+    "cities": [
+      "Laayoune",
+      "Dakhla",
+      "Smara",
+      "Boujdour"
+    ],
+    "kind": "cities and settlements",
+    "note": "Western Sahara is disputed. Place names are scenario geography and do not assert sovereignty.",
+    "iso2": "EH",
+    "flag": "🇪🇭"
+  },
+  "KAZ": {
+    "name": "Kazakhstan",
+    "cities": [
+      "Almaty",
+      "Astana",
+      "Shymkent",
+      "Karaganda",
+      "Aktobe",
+      "Atyrau"
+    ],
+    "iso2": "KZ",
+    "flag": "🇰🇿",
+    "kind": "cities and settlements"
+  },
+  "UZB": {
+    "name": "Uzbekistan",
+    "cities": [
+      "Tashkent",
+      "Samarkand",
+      "Bukhara",
+      "Namangan",
+      "Andijan",
+      "Nukus"
+    ],
+    "iso2": "UZ",
+    "flag": "🇺🇿",
+    "kind": "cities and settlements"
+  },
+  "PNG": {
+    "name": "Papua New Guinea",
+    "cities": [
+      "Port Moresby",
+      "Lae",
+      "Mount Hagen",
+      "Madang",
+      "Goroka",
+      "Kokopo"
+    ],
+    "iso2": "PG",
+    "flag": "🇵🇬",
+    "kind": "cities and settlements"
+  },
+  "IDN": {
+    "name": "Indonesia",
+    "cities": [
+      "Jakarta",
+      "Surabaya",
+      "Bandung",
+      "Medan",
+      "Makassar",
+      "Semarang"
+    ],
+    "iso2": "ID",
+    "flag": "🇮🇩",
+    "kind": "cities and settlements"
+  },
+  "ARG": {
+    "name": "Argentina",
+    "cities": [
+      "Buenos Aires",
+      "Córdoba",
+      "Rosario",
+      "Mendoza",
+      "La Plata",
+      "Salta"
+    ],
+    "iso2": "AR",
+    "flag": "🇦🇷",
+    "kind": "cities and settlements"
+  },
+  "CHL": {
+    "name": "Chile",
+    "cities": [
+      "Santiago",
+      "Valparaíso",
+      "Concepción",
+      "Antofagasta",
+      "Temuco",
+      "Puerto Montt"
+    ],
+    "iso2": "CL",
+    "flag": "🇨🇱",
+    "kind": "cities and settlements"
+  },
+  "COD": {
+    "name": "Democratic Republic of the Congo",
+    "cities": [
+      "Kinshasa",
+      "Lubumbashi",
+      "Mbuji-Mayi",
+      "Kisangani",
+      "Goma",
+      "Bukavu"
+    ],
+    "iso2": "CD",
+    "flag": "🇨🇩",
+    "kind": "cities and settlements"
+  },
+  "SOM": {
+    "name": "Somalia",
+    "cities": [
+      "Mogadishu",
+      "Kismayo",
+      "Baidoa",
+      "Beledweyne",
+      "Garowe",
+      "Bosaso"
+    ],
+    "iso2": "SO",
+    "flag": "🇸🇴",
+    "kind": "cities and settlements"
+  },
+  "KEN": {
+    "name": "Kenya",
+    "cities": [
+      "Nairobi",
+      "Mombasa",
+      "Kisumu",
+      "Nakuru",
+      "Eldoret",
+      "Thika"
+    ],
+    "iso2": "KE",
+    "flag": "🇰🇪",
+    "kind": "cities and settlements"
+  },
+  "SDN": {
+    "name": "Sudan",
+    "cities": [
+      "Khartoum",
+      "Omdurman",
+      "Port Sudan",
+      "Kassala",
+      "El Obeid",
+      "Nyala"
+    ],
+    "iso2": "SD",
+    "flag": "🇸🇩",
+    "kind": "cities and settlements"
+  },
+  "TCD": {
+    "name": "Chad",
+    "cities": [
+      "N'Djamena",
+      "Moundou",
+      "Sarh",
+      "Abéché",
+      "Kélo",
+      "Doba"
+    ],
+    "iso2": "TD",
+    "flag": "🇹🇩",
+    "kind": "cities and settlements"
+  },
+  "HTI": {
+    "name": "Haiti",
+    "cities": [
+      "Port-au-Prince",
+      "Cap-Haïtien",
+      "Gonaïves",
+      "Les Cayes",
+      "Jacmel",
+      "Jérémie"
+    ],
+    "iso2": "HT",
+    "flag": "🇭🇹",
+    "kind": "cities and settlements"
+  },
+  "DOM": {
+    "name": "Dominican Republic",
+    "cities": [
+      "Santo Domingo",
+      "Santiago de los Caballeros",
+      "La Romana",
+      "San Pedro de Macorís",
+      "San Francisco de Macorís",
+      "Puerto Plata"
+    ],
+    "iso2": "DO",
+    "flag": "🇩🇴",
+    "kind": "cities and settlements"
+  },
+  "RUS": {
+    "name": "Russian Federation",
+    "cities": [
+      "Moscow",
+      "Saint Petersburg",
+      "Novosibirsk",
+      "Yekaterinburg",
+      "Kazan",
+      "Vladivostok"
+    ],
+    "iso2": "RU",
+    "flag": "🇷🇺",
+    "kind": "cities and settlements"
+  },
+  "BHS": {
+    "name": "Bahamas",
+    "cities": [
+      "Nassau",
+      "Freeport",
+      "Marsh Harbour",
+      "George Town"
+    ],
+    "iso2": "BS",
+    "flag": "🇧🇸",
+    "kind": "cities and settlements"
+  },
+  "FLK": {
+    "name": "Falkland Islands / Malvinas",
+    "cities": [
+      "Stanley",
+      "Goose Green",
+      "Darwin",
+      "Port Howard",
+      "Fox Bay",
+      "Port San Carlos"
+    ],
+    "iso2": "FK",
+    "flag": "🇫🇰",
+    "kind": "cities and settlements"
+  },
+  "NOR": {
+    "name": "Norway",
+    "cities": [
+      "Oslo",
+      "Bergen",
+      "Trondheim",
+      "Stavanger",
+      "Tromsø",
+      "Kristiansand"
+    ],
+    "iso2": "NO",
+    "flag": "🇳🇴",
+    "kind": "cities and settlements"
+  },
+  "GRL": {
+    "name": "Greenland",
+    "cities": [
+      "Nuuk",
+      "Sisimiut",
+      "Ilulissat",
+      "Qaqortoq",
+      "Aasiaat",
+      "Tasiilaq"
+    ],
+    "iso2": "GL",
+    "flag": "🇬🇱",
+    "kind": "cities and settlements"
+  },
+  "ATF": {
+    "name": "French Southern and Antarctic Lands",
+    "cities": [
+      "Port-aux-Français",
+      "Alfred-Faure",
+      "Martin-de-Viviès"
+    ],
+    "kind": "research bases",
+    "note": "Research stations with rotating staff, not conventional cities. No permanent civilian city population is implied.",
+    "iso2": "TF",
+    "flag": "🇹🇫"
+  },
+  "TLS": {
+    "name": "Timor-Leste",
+    "cities": [
+      "Dili",
+      "Baucau",
+      "Maliana",
+      "Suai",
+      "Lospalos",
+      "Liquiçá"
+    ],
+    "iso2": "TL",
+    "flag": "🇹🇱",
+    "kind": "cities and settlements"
+  },
+  "ZAF": {
+    "name": "South Africa",
+    "cities": [
+      "Johannesburg",
+      "Cape Town",
+      "Durban",
+      "Pretoria",
+      "Gqeberha",
+      "Bloemfontein"
+    ],
+    "iso2": "ZA",
+    "flag": "🇿🇦",
+    "kind": "cities and settlements"
+  },
+  "LSO": {
+    "name": "Lesotho",
+    "cities": [
+      "Maseru",
+      "Teyateyaneng",
+      "Mafeteng",
+      "Hlotse",
+      "Mohale's Hoek",
+      "Quthing"
+    ],
+    "iso2": "LS",
+    "flag": "🇱🇸",
+    "kind": "cities and settlements"
+  },
+  "MEX": {
+    "name": "Mexico",
+    "cities": [
+      "Mexico City",
+      "Guadalajara",
+      "Monterrey",
+      "Puebla",
+      "Tijuana",
+      "Mérida"
+    ],
+    "iso2": "MX",
+    "flag": "🇲🇽",
+    "kind": "cities and settlements"
+  },
+  "URY": {
+    "name": "Uruguay",
+    "cities": [
+      "Montevideo",
+      "Salto",
+      "Paysandú",
+      "Las Piedras",
+      "Rivera",
+      "Maldonado"
+    ],
+    "iso2": "UY",
+    "flag": "🇺🇾",
+    "kind": "cities and settlements"
+  },
+  "BRA": {
+    "name": "Brazil",
+    "cities": [
+      "São Paulo",
+      "Rio de Janeiro",
+      "Brasília",
+      "Salvador",
+      "Belo Horizonte",
+      "Manaus"
+    ],
+    "iso2": "BR",
+    "flag": "🇧🇷",
+    "kind": "cities and settlements"
+  },
+  "BOL": {
+    "name": "Bolivia",
+    "cities": [
+      "La Paz",
+      "Santa Cruz de la Sierra",
+      "Cochabamba",
+      "Sucre",
+      "Oruro",
+      "Potosí"
+    ],
+    "iso2": "BO",
+    "flag": "🇧🇴",
+    "kind": "cities and settlements"
+  },
+  "PER": {
+    "name": "Peru",
+    "cities": [
+      "Lima",
+      "Arequipa",
+      "Trujillo",
+      "Chiclayo",
+      "Cusco",
+      "Iquitos"
+    ],
+    "iso2": "PE",
+    "flag": "🇵🇪",
+    "kind": "cities and settlements"
+  },
+  "COL": {
+    "name": "Colombia",
+    "cities": [
+      "Bogotá",
+      "Medellín",
+      "Cali",
+      "Barranquilla",
+      "Cartagena",
+      "Bucaramanga"
+    ],
+    "iso2": "CO",
+    "flag": "🇨🇴",
+    "kind": "cities and settlements"
+  },
+  "PAN": {
+    "name": "Panama",
+    "cities": [
+      "Panama City",
+      "Colón",
+      "David",
+      "Santiago",
+      "Chitré",
+      "La Chorrera"
+    ],
+    "iso2": "PA",
+    "flag": "🇵🇦",
+    "kind": "cities and settlements"
+  },
+  "CRI": {
+    "name": "Costa Rica",
+    "cities": [
+      "San José",
+      "Alajuela",
+      "Cartago",
+      "Heredia",
+      "Puntarenas",
+      "Limón"
+    ],
+    "iso2": "CR",
+    "flag": "🇨🇷",
+    "kind": "cities and settlements"
+  },
+  "NIC": {
+    "name": "Nicaragua",
+    "cities": [
+      "Managua",
+      "León",
+      "Masaya",
+      "Matagalpa",
+      "Chinandega",
+      "Granada"
+    ],
+    "iso2": "NI",
+    "flag": "🇳🇮",
+    "kind": "cities and settlements"
+  },
+  "HND": {
+    "name": "Honduras",
+    "cities": [
+      "Tegucigalpa",
+      "San Pedro Sula",
+      "La Ceiba",
+      "Choluteca",
+      "Comayagua",
+      "Puerto Cortés"
+    ],
+    "iso2": "HN",
+    "flag": "🇭🇳",
+    "kind": "cities and settlements"
+  },
+  "SLV": {
+    "name": "El Salvador",
+    "cities": [
+      "San Salvador",
+      "Santa Ana",
+      "San Miguel",
+      "Sonsonate",
+      "Santa Tecla",
+      "Usulután"
+    ],
+    "iso2": "SV",
+    "flag": "🇸🇻",
+    "kind": "cities and settlements"
+  },
+  "GTM": {
+    "name": "Guatemala",
+    "cities": [
+      "Guatemala City",
+      "Quetzaltenango",
+      "Escuintla",
+      "Cobán",
+      "Antigua Guatemala",
+      "Puerto Barrios"
+    ],
+    "iso2": "GT",
+    "flag": "🇬🇹",
+    "kind": "cities and settlements"
+  },
+  "BLZ": {
+    "name": "Belize",
+    "cities": [
+      "Belize City",
+      "Belmopan",
+      "San Ignacio",
+      "Orange Walk",
+      "Corozal",
+      "Dangriga"
+    ],
+    "iso2": "BZ",
+    "flag": "🇧🇿",
+    "kind": "cities and settlements"
+  },
+  "VEN": {
+    "name": "Venezuela",
+    "cities": [
+      "Caracas",
+      "Maracaibo",
+      "Valencia",
+      "Barquisimeto",
+      "Maracay",
+      "Ciudad Guayana"
+    ],
+    "iso2": "VE",
+    "flag": "🇻🇪",
+    "kind": "cities and settlements"
+  },
+  "GUY": {
+    "name": "Guyana",
+    "cities": [
+      "Georgetown",
+      "Linden",
+      "New Amsterdam",
+      "Anna Regina",
+      "Bartica",
+      "Lethem"
+    ],
+    "iso2": "GY",
+    "flag": "🇬🇾",
+    "kind": "cities and settlements"
+  },
+  "SUR": {
+    "name": "Suriname",
+    "cities": [
+      "Paramaribo",
+      "Lelydorp",
+      "Nieuw Nickerie",
+      "Moengo",
+      "Albina",
+      "Brokopondo"
+    ],
+    "iso2": "SR",
+    "flag": "🇸🇷",
+    "kind": "cities and settlements"
+  },
+  "FRA": {
+    "name": "France",
+    "cities": [
+      "Paris",
+      "Marseille",
+      "Lyon",
+      "Toulouse",
+      "Nice",
+      "Nantes"
+    ],
+    "iso2": "FR",
+    "flag": "🇫🇷",
+    "kind": "cities and settlements"
+  },
+  "ECU": {
+    "name": "Ecuador",
+    "cities": [
+      "Quito",
+      "Guayaquil",
+      "Cuenca",
+      "Santo Domingo",
+      "Machala",
+      "Manta"
+    ],
+    "iso2": "EC",
+    "flag": "🇪🇨",
+    "kind": "cities and settlements"
+  },
+  "PRI": {
+    "name": "Puerto Rico",
+    "cities": [
+      "San Juan",
+      "Bayamón",
+      "Ponce",
+      "Carolina",
+      "Caguas",
+      "Mayagüez"
+    ],
+    "iso2": "PR",
+    "flag": "🇵🇷",
+    "kind": "cities and settlements"
+  },
+  "JAM": {
+    "name": "Jamaica",
+    "cities": [
+      "Kingston",
+      "Montego Bay",
+      "Spanish Town",
+      "Portmore",
+      "Mandeville",
+      "Ocho Rios"
+    ],
+    "iso2": "JM",
+    "flag": "🇯🇲",
+    "kind": "cities and settlements"
+  },
+  "CUB": {
+    "name": "Cuba",
+    "cities": [
+      "Havana",
+      "Santiago de Cuba",
+      "Camagüey",
+      "Holguín",
+      "Santa Clara",
+      "Guantánamo"
+    ],
+    "iso2": "CU",
+    "flag": "🇨🇺",
+    "kind": "cities and settlements"
+  },
+  "ZWE": {
+    "name": "Zimbabwe",
+    "cities": [
+      "Harare",
+      "Bulawayo",
+      "Chitungwiza",
+      "Mutare",
+      "Gweru",
+      "Masvingo"
+    ],
+    "iso2": "ZW",
+    "flag": "🇿🇼",
+    "kind": "cities and settlements"
+  },
+  "BWA": {
+    "name": "Botswana",
+    "cities": [
+      "Gaborone",
+      "Francistown",
+      "Maun",
+      "Molepolole",
+      "Serowe",
+      "Lobatse"
+    ],
+    "iso2": "BW",
+    "flag": "🇧🇼",
+    "kind": "cities and settlements"
+  },
+  "NAM": {
+    "name": "Namibia",
+    "cities": [
+      "Windhoek",
+      "Walvis Bay",
+      "Swakopmund",
+      "Rundu",
+      "Oshakati",
+      "Katima Mulilo"
+    ],
+    "iso2": "NA",
+    "flag": "🇳🇦",
+    "kind": "cities and settlements"
+  },
+  "SEN": {
+    "name": "Senegal",
+    "cities": [
+      "Dakar",
+      "Thiès",
+      "Saint-Louis",
+      "Kaolack",
+      "Ziguinchor",
+      "Touba"
+    ],
+    "iso2": "SN",
+    "flag": "🇸🇳",
+    "kind": "cities and settlements"
+  },
+  "MLI": {
+    "name": "Mali",
+    "cities": [
+      "Bamako",
+      "Sikasso",
+      "Ségou",
+      "Mopti",
+      "Kayes",
+      "Timbuktu"
+    ],
+    "iso2": "ML",
+    "flag": "🇲🇱",
+    "kind": "cities and settlements"
+  },
+  "MRT": {
+    "name": "Mauritania",
+    "cities": [
+      "Nouakchott",
+      "Nouadhibou",
+      "Kiffa",
+      "Kaédi",
+      "Rosso",
+      "Atar"
+    ],
+    "iso2": "MR",
+    "flag": "🇲🇷",
+    "kind": "cities and settlements"
+  },
+  "BEN": {
+    "name": "Benin",
+    "cities": [
+      "Cotonou",
+      "Porto-Novo",
+      "Parakou",
+      "Abomey",
+      "Bohicon",
+      "Djougou"
+    ],
+    "iso2": "BJ",
+    "flag": "🇧🇯",
+    "kind": "cities and settlements"
+  },
+  "NER": {
+    "name": "Niger",
+    "cities": [
+      "Niamey",
+      "Zinder",
+      "Maradi",
+      "Agadez",
+      "Tahoua",
+      "Dosso"
+    ],
+    "iso2": "NE",
+    "flag": "🇳🇪",
+    "kind": "cities and settlements"
+  },
+  "NGA": {
+    "name": "Nigeria",
+    "cities": [
+      "Lagos",
+      "Abuja",
+      "Kano",
+      "Ibadan",
+      "Port Harcourt",
+      "Benin City"
+    ],
+    "iso2": "NG",
+    "flag": "🇳🇬",
+    "kind": "cities and settlements"
+  },
+  "CMR": {
+    "name": "Cameroon",
+    "cities": [
+      "Douala",
+      "Yaoundé",
+      "Garoua",
+      "Bamenda",
+      "Maroua",
+      "Bafoussam"
+    ],
+    "iso2": "CM",
+    "flag": "🇨🇲",
+    "kind": "cities and settlements"
+  },
+  "TGO": {
+    "name": "Togo",
+    "cities": [
+      "Lomé",
+      "Sokodé",
+      "Kara",
+      "Kpalimé",
+      "Atakpamé",
+      "Dapaong"
+    ],
+    "iso2": "TG",
+    "flag": "🇹🇬",
+    "kind": "cities and settlements"
+  },
+  "GHA": {
+    "name": "Ghana",
+    "cities": [
+      "Accra",
+      "Kumasi",
+      "Tamale",
+      "Tema",
+      "Sekondi-Takoradi",
+      "Cape Coast"
+    ],
+    "iso2": "GH",
+    "flag": "🇬🇭",
+    "kind": "cities and settlements"
+  },
+  "CIV": {
+    "name": "Côte d'Ivoire",
+    "cities": [
+      "Abidjan",
+      "Yamoussoukro",
+      "Bouaké",
+      "Daloa",
+      "San-Pédro",
+      "Korhogo"
+    ],
+    "iso2": "CI",
+    "flag": "🇨🇮",
+    "kind": "cities and settlements"
+  },
+  "GIN": {
+    "name": "Guinea",
+    "cities": [
+      "Conakry",
+      "Kankan",
+      "Nzérékoré",
+      "Kindia",
+      "Labé",
+      "Boké"
+    ],
+    "iso2": "GN",
+    "flag": "🇬🇳",
+    "kind": "cities and settlements"
+  },
+  "GNB": {
+    "name": "Guinea-Bissau",
+    "cities": [
+      "Bissau",
+      "Bafatá",
+      "Gabú",
+      "Bissorã",
+      "Bolama",
+      "Cacheu"
+    ],
+    "iso2": "GW",
+    "flag": "🇬🇼",
+    "kind": "cities and settlements"
+  },
+  "LBR": {
+    "name": "Liberia",
+    "cities": [
+      "Monrovia",
+      "Gbarnga",
+      "Buchanan",
+      "Ganta",
+      "Kakata",
+      "Harper"
+    ],
+    "iso2": "LR",
+    "flag": "🇱🇷",
+    "kind": "cities and settlements"
+  },
+  "SLE": {
+    "name": "Sierra Leone",
+    "cities": [
+      "Freetown",
+      "Bo",
+      "Kenema",
+      "Makeni",
+      "Koidu",
+      "Port Loko"
+    ],
+    "iso2": "SL",
+    "flag": "🇸🇱",
+    "kind": "cities and settlements"
+  },
+  "BFA": {
+    "name": "Burkina Faso",
+    "cities": [
+      "Ouagadougou",
+      "Bobo-Dioulasso",
+      "Koudougou",
+      "Ouahigouya",
+      "Banfora",
+      "Kaya"
+    ],
+    "iso2": "BF",
+    "flag": "🇧🇫",
+    "kind": "cities and settlements"
+  },
+  "CAF": {
+    "name": "Central African Republic",
+    "cities": [
+      "Bangui",
+      "Bimbo",
+      "Berbérati",
+      "Bambari",
+      "Bouar",
+      "Bossangoa"
+    ],
+    "iso2": "CF",
+    "flag": "🇨🇫",
+    "kind": "cities and settlements"
+  },
+  "COG": {
+    "name": "Republic of the Congo",
+    "cities": [
+      "Brazzaville",
+      "Pointe-Noire",
+      "Dolisie",
+      "Nkayi",
+      "Ouésso",
+      "Owando"
+    ],
+    "iso2": "CG",
+    "flag": "🇨🇬",
+    "kind": "cities and settlements"
+  },
+  "GAB": {
+    "name": "Gabon",
+    "cities": [
+      "Libreville",
+      "Port-Gentil",
+      "Franceville",
+      "Oyem",
+      "Moanda",
+      "Lambaréné"
+    ],
+    "iso2": "GA",
+    "flag": "🇬🇦",
+    "kind": "cities and settlements"
+  },
+  "GNQ": {
+    "name": "Equatorial Guinea",
+    "cities": [
+      "Malabo",
+      "Bata",
+      "Ebebiyín",
+      "Mongomo",
+      "Luba",
+      "Evinayong"
+    ],
+    "iso2": "GQ",
+    "flag": "🇬🇶",
+    "kind": "cities and settlements"
+  },
+  "ZMB": {
+    "name": "Zambia",
+    "cities": [
+      "Lusaka",
+      "Kitwe",
+      "Ndola",
+      "Kabwe",
+      "Livingstone",
+      "Chipata"
+    ],
+    "iso2": "ZM",
+    "flag": "🇿🇲",
+    "kind": "cities and settlements"
+  },
+  "MWI": {
+    "name": "Malawi",
+    "cities": [
+      "Lilongwe",
+      "Blantyre",
+      "Mzuzu",
+      "Zomba",
+      "Kasungu",
+      "Mangochi"
+    ],
+    "iso2": "MW",
+    "flag": "🇲🇼",
+    "kind": "cities and settlements"
+  },
+  "MOZ": {
+    "name": "Mozambique",
+    "cities": [
+      "Maputo",
+      "Matola",
+      "Beira",
+      "Nampula",
+      "Chimoio",
+      "Tete"
+    ],
+    "iso2": "MZ",
+    "flag": "🇲🇿",
+    "kind": "cities and settlements"
+  },
+  "SWZ": {
+    "name": "Kingdom of eSwatini",
+    "cities": [
+      "Mbabane",
+      "Manzini",
+      "Lobamba",
+      "Siteki",
+      "Nhlangano",
+      "Big Bend"
+    ],
+    "iso2": "SZ",
+    "flag": "🇸🇿",
+    "kind": "cities and settlements"
+  },
+  "AGO": {
+    "name": "Angola",
+    "cities": [
+      "Luanda",
+      "Huambo",
+      "Lobito",
+      "Benguela",
+      "Lubango",
+      "Malanje"
+    ],
+    "iso2": "AO",
+    "flag": "🇦🇴",
+    "kind": "cities and settlements"
+  },
+  "BDI": {
+    "name": "Burundi",
+    "cities": [
+      "Bujumbura",
+      "Gitega",
+      "Ngozi",
+      "Rumonge",
+      "Muyinga",
+      "Ruyigi"
+    ],
+    "iso2": "BI",
+    "flag": "🇧🇮",
+    "kind": "cities and settlements"
+  },
+  "ISR": {
+    "name": "Israel",
+    "cities": [
+      "Tel Aviv",
+      "Haifa",
+      "Beersheba",
+      "Rishon LeZion",
+      "Petah Tikva",
+      "Ashdod"
+    ],
+    "iso2": "IL",
+    "flag": "🇮🇱",
+    "kind": "cities and settlements"
+  },
+  "LBN": {
+    "name": "Lebanon",
+    "cities": [
+      "Beirut",
+      "Tripoli",
+      "Sidon",
+      "Tyre",
+      "Zahlé",
+      "Baalbek"
+    ],
+    "iso2": "LB",
+    "flag": "🇱🇧",
+    "kind": "cities and settlements"
+  },
+  "MDG": {
+    "name": "Madagascar",
+    "cities": [
+      "Antananarivo",
+      "Toamasina",
+      "Antsirabe",
+      "Mahajanga",
+      "Fianarantsoa",
+      "Toliara"
+    ],
+    "iso2": "MG",
+    "flag": "🇲🇬",
+    "kind": "cities and settlements"
+  },
+  "PSE": {
+    "name": "Palestine",
+    "cities": [
+      "Gaza City",
+      "Ramallah",
+      "Hebron",
+      "Nablus",
+      "Bethlehem",
+      "Jenin"
+    ],
+    "iso2": "PS",
+    "flag": "🇵🇸",
+    "kind": "cities and settlements"
+  },
+  "GMB": {
+    "name": "The Gambia",
+    "cities": [
+      "Banjul",
+      "Serekunda",
+      "Brikama",
+      "Bakau",
+      "Farafenni",
+      "Basse Santa Su"
+    ],
+    "iso2": "GM",
+    "flag": "🇬🇲",
+    "kind": "cities and settlements"
+  },
+  "TUN": {
+    "name": "Tunisia",
+    "cities": [
+      "Tunis",
+      "Sfax",
+      "Sousse",
+      "Kairouan",
+      "Bizerte",
+      "Gabès"
+    ],
+    "iso2": "TN",
+    "flag": "🇹🇳",
+    "kind": "cities and settlements"
+  },
+  "DZA": {
+    "name": "Algeria",
+    "cities": [
+      "Algiers",
+      "Oran",
+      "Constantine",
+      "Annaba",
+      "Batna",
+      "Sétif"
+    ],
+    "iso2": "DZ",
+    "flag": "🇩🇿",
+    "kind": "cities and settlements"
+  },
+  "JOR": {
+    "name": "Jordan",
+    "cities": [
+      "Amman",
+      "Zarqa",
+      "Irbid",
+      "Aqaba",
+      "Salt",
+      "Madaba"
+    ],
+    "iso2": "JO",
+    "flag": "🇯🇴",
+    "kind": "cities and settlements"
+  },
+  "ARE": {
+    "name": "United Arab Emirates",
+    "cities": [
+      "Dubai",
+      "Abu Dhabi",
+      "Sharjah",
+      "Ajman",
+      "Ras Al Khaimah",
+      "Al Ain"
+    ],
+    "iso2": "AE",
+    "flag": "🇦🇪",
+    "kind": "cities and settlements"
+  },
+  "QAT": {
+    "name": "Qatar",
+    "cities": [
+      "Doha",
+      "Al Rayyan",
+      "Al Wakrah",
+      "Al Khor",
+      "Dukhan",
+      "Mesaieed"
+    ],
+    "iso2": "QA",
+    "flag": "🇶🇦",
+    "kind": "cities and settlements"
+  },
+  "KWT": {
+    "name": "Kuwait",
+    "cities": [
+      "Kuwait City",
+      "Hawalli",
+      "Salmiya",
+      "Al Ahmadi",
+      "Jahra",
+      "Farwaniya"
+    ],
+    "iso2": "KW",
+    "flag": "🇰🇼",
+    "kind": "cities and settlements"
+  },
+  "IRQ": {
+    "name": "Iraq",
+    "cities": [
+      "Baghdad",
+      "Basra",
+      "Mosul",
+      "Erbil",
+      "Najaf",
+      "Sulaymaniyah"
+    ],
+    "iso2": "IQ",
+    "flag": "🇮🇶",
+    "kind": "cities and settlements"
+  },
+  "OMN": {
+    "name": "Oman",
+    "cities": [
+      "Muscat",
+      "Salalah",
+      "Sohar",
+      "Nizwa",
+      "Sur",
+      "Ibri"
+    ],
+    "iso2": "OM",
+    "flag": "🇴🇲",
+    "kind": "cities and settlements"
+  },
+  "VUT": {
+    "name": "Vanuatu",
+    "cities": [
+      "Port Vila",
+      "Luganville",
+      "Isangel",
+      "Lakatoro"
+    ],
+    "iso2": "VU",
+    "flag": "🇻🇺",
+    "kind": "cities and settlements"
+  },
+  "KHM": {
+    "name": "Cambodia",
+    "cities": [
+      "Phnom Penh",
+      "Siem Reap",
+      "Battambang",
+      "Sihanoukville",
+      "Kampong Cham",
+      "Kampot"
+    ],
+    "iso2": "KH",
+    "flag": "🇰🇭",
+    "kind": "cities and settlements"
+  },
+  "THA": {
+    "name": "Thailand",
+    "cities": [
+      "Bangkok",
+      "Chiang Mai",
+      "Khon Kaen",
+      "Nakhon Ratchasima",
+      "Hat Yai",
+      "Phuket"
+    ],
+    "iso2": "TH",
+    "flag": "🇹🇭",
+    "kind": "cities and settlements"
+  },
+  "LAO": {
+    "name": "Lao PDR",
+    "cities": [
+      "Vientiane",
+      "Luang Prabang",
+      "Savannakhet",
+      "Pakse",
+      "Thakhek",
+      "Phonsavan"
+    ],
+    "iso2": "LA",
+    "flag": "🇱🇦",
+    "kind": "cities and settlements"
+  },
+  "MMR": {
+    "name": "Myanmar",
+    "cities": [
+      "Yangon",
+      "Mandalay",
+      "Naypyidaw",
+      "Mawlamyine",
+      "Bago",
+      "Pathein"
+    ],
+    "iso2": "MM",
+    "flag": "🇲🇲",
+    "kind": "cities and settlements"
+  },
+  "VNM": {
+    "name": "Vietnam",
+    "cities": [
+      "Hanoi",
+      "Ho Chi Minh City",
+      "Da Nang",
+      "Haiphong",
+      "Can Tho",
+      "Hue"
+    ],
+    "iso2": "VN",
+    "flag": "🇻🇳",
+    "kind": "cities and settlements"
+  },
+  "PRK": {
+    "name": "Dem. Rep. Korea",
+    "cities": [
+      "Pyongyang",
+      "Hamhung",
+      "Chongjin",
+      "Nampo",
+      "Wonsan",
+      "Sinuiju"
+    ],
+    "iso2": "KP",
+    "flag": "🇰🇵",
+    "kind": "cities and settlements"
+  },
+  "KOR": {
+    "name": "Republic of Korea",
+    "cities": [
+      "Seoul",
+      "Busan",
+      "Incheon",
+      "Daegu",
+      "Daejeon",
+      "Gwangju"
+    ],
+    "iso2": "KR",
+    "flag": "🇰🇷",
+    "kind": "cities and settlements"
+  },
+  "MNG": {
+    "name": "Mongolia",
+    "cities": [
+      "Ulaanbaatar",
+      "Erdenet",
+      "Darkhan",
+      "Choibalsan",
+      "Mörön",
+      "Khovd"
+    ],
+    "iso2": "MN",
+    "flag": "🇲🇳",
+    "kind": "cities and settlements"
+  },
+  "IND": {
+    "name": "India",
+    "cities": [
+      "Mumbai",
+      "Delhi",
+      "Bengaluru",
+      "Chennai",
+      "Kolkata",
+      "Hyderabad"
+    ],
+    "iso2": "IN",
+    "flag": "🇮🇳",
+    "kind": "cities and settlements"
+  },
+  "BGD": {
+    "name": "Bangladesh",
+    "cities": [
+      "Dhaka",
+      "Chattogram",
+      "Khulna",
+      "Rajshahi",
+      "Sylhet",
+      "Barishal"
+    ],
+    "iso2": "BD",
+    "flag": "🇧🇩",
+    "kind": "cities and settlements"
+  },
+  "BTN": {
+    "name": "Bhutan",
+    "cities": [
+      "Thimphu",
+      "Phuntsholing",
+      "Paro",
+      "Punakha",
+      "Wangdue Phodrang",
+      "Gelephu"
+    ],
+    "iso2": "BT",
+    "flag": "🇧🇹",
+    "kind": "cities and settlements"
+  },
+  "NPL": {
+    "name": "Nepal",
+    "cities": [
+      "Kathmandu",
+      "Pokhara",
+      "Lalitpur",
+      "Biratnagar",
+      "Birgunj",
+      "Bharatpur"
+    ],
+    "iso2": "NP",
+    "flag": "🇳🇵",
+    "kind": "cities and settlements"
+  },
+  "PAK": {
+    "name": "Pakistan",
+    "cities": [
+      "Karachi",
+      "Lahore",
+      "Islamabad",
+      "Faisalabad",
+      "Rawalpindi",
+      "Peshawar"
+    ],
+    "iso2": "PK",
+    "flag": "🇵🇰",
+    "kind": "cities and settlements"
+  },
+  "AFG": {
+    "name": "Afghanistan",
+    "cities": [
+      "Kabul",
+      "Kandahar",
+      "Herat",
+      "Mazar-i-Sharif",
+      "Jalalabad",
+      "Kunduz"
+    ],
+    "iso2": "AF",
+    "flag": "🇦🇫",
+    "kind": "cities and settlements"
+  },
+  "TJK": {
+    "name": "Tajikistan",
+    "cities": [
+      "Dushanbe",
+      "Khujand",
+      "Bokhtar",
+      "Kulob",
+      "Istaravshan",
+      "Khorog"
+    ],
+    "iso2": "TJ",
+    "flag": "🇹🇯",
+    "kind": "cities and settlements"
+  },
+  "KGZ": {
+    "name": "Kyrgyzstan",
+    "cities": [
+      "Bishkek",
+      "Osh",
+      "Jalal-Abad",
+      "Karakol",
+      "Tokmok",
+      "Naryn"
+    ],
+    "iso2": "KG",
+    "flag": "🇰🇬",
+    "kind": "cities and settlements"
+  },
+  "TKM": {
+    "name": "Turkmenistan",
+    "cities": [
+      "Ashgabat",
+      "Türkmenabat",
+      "Daşoguz",
+      "Mary",
+      "Balkanabat",
+      "Türkmenbaşy"
+    ],
+    "iso2": "TM",
+    "flag": "🇹🇲",
+    "kind": "cities and settlements"
+  },
+  "IRN": {
+    "name": "Iran",
+    "cities": [
+      "Tehran",
+      "Mashhad",
+      "Isfahan",
+      "Shiraz",
+      "Tabriz",
+      "Ahvaz"
+    ],
+    "iso2": "IR",
+    "flag": "🇮🇷",
+    "kind": "cities and settlements"
+  },
+  "SYR": {
+    "name": "Syria",
+    "cities": [
+      "Damascus",
+      "Aleppo",
+      "Homs",
+      "Hama",
+      "Latakia",
+      "Deir ez-Zor"
+    ],
+    "iso2": "SY",
+    "flag": "🇸🇾",
+    "kind": "cities and settlements"
+  },
+  "ARM": {
+    "name": "Armenia",
+    "cities": [
+      "Yerevan",
+      "Gyumri",
+      "Vanadzor",
+      "Vagharshapat",
+      "Hrazdan",
+      "Kapan"
+    ],
+    "iso2": "AM",
+    "flag": "🇦🇲",
+    "kind": "cities and settlements"
+  },
+  "SWE": {
+    "name": "Sweden",
+    "cities": [
+      "Stockholm",
+      "Gothenburg",
+      "Malmö",
+      "Uppsala",
+      "Västerås",
+      "Örebro"
+    ],
+    "iso2": "SE",
+    "flag": "🇸🇪",
+    "kind": "cities and settlements"
+  },
+  "BLR": {
+    "name": "Belarus",
+    "cities": [
+      "Minsk",
+      "Gomel",
+      "Mogilev",
+      "Vitebsk",
+      "Grodno",
+      "Brest"
+    ],
+    "iso2": "BY",
+    "flag": "🇧🇾",
+    "kind": "cities and settlements"
+  },
+  "UKR": {
+    "name": "Ukraine",
+    "cities": [
+      "Kyiv",
+      "Kharkiv",
+      "Odesa",
+      "Dnipro",
+      "Lviv",
+      "Zaporizhzhia"
+    ],
+    "iso2": "UA",
+    "flag": "🇺🇦",
+    "kind": "cities and settlements"
+  },
+  "POL": {
+    "name": "Poland",
+    "cities": [
+      "Warsaw",
+      "Kraków",
+      "Łódź",
+      "Wrocław",
+      "Poznań",
+      "Gdańsk"
+    ],
+    "iso2": "PL",
+    "flag": "🇵🇱",
+    "kind": "cities and settlements"
+  },
+  "AUT": {
+    "name": "Austria",
+    "cities": [
+      "Vienna",
+      "Graz",
+      "Linz",
+      "Salzburg",
+      "Innsbruck",
+      "Klagenfurt"
+    ],
+    "iso2": "AT",
+    "flag": "🇦🇹",
+    "kind": "cities and settlements"
+  },
+  "HUN": {
+    "name": "Hungary",
+    "cities": [
+      "Budapest",
+      "Debrecen",
+      "Szeged",
+      "Miskolc",
+      "Pécs",
+      "Győr"
+    ],
+    "iso2": "HU",
+    "flag": "🇭🇺",
+    "kind": "cities and settlements"
+  },
+  "MDA": {
+    "name": "Moldova",
+    "cities": [
+      "Chișinău",
+      "Bălți",
+      "Tiraspol",
+      "Bender",
+      "Cahul",
+      "Ungheni"
+    ],
+    "kind": "cities and settlements",
+    "note": "Includes Tiraspol and Bender in the disputed Transnistrian region; the simplified scenario does not model current jurisdiction.",
+    "iso2": "MD",
+    "flag": "🇲🇩"
+  },
+  "ROU": {
+    "name": "Romania",
+    "cities": [
+      "Bucharest",
+      "Cluj-Napoca",
+      "Timișoara",
+      "Iași",
+      "Constanța",
+      "Craiova"
+    ],
+    "iso2": "RO",
+    "flag": "🇷🇴",
+    "kind": "cities and settlements"
+  },
+  "LTU": {
+    "name": "Lithuania",
+    "cities": [
+      "Vilnius",
+      "Kaunas",
+      "Klaipėda",
+      "Šiauliai",
+      "Panevėžys",
+      "Alytus"
+    ],
+    "iso2": "LT",
+    "flag": "🇱🇹",
+    "kind": "cities and settlements"
+  },
+  "LVA": {
+    "name": "Latvia",
+    "cities": [
+      "Riga",
+      "Daugavpils",
+      "Liepāja",
+      "Jelgava",
+      "Jūrmala",
+      "Ventspils"
+    ],
+    "iso2": "LV",
+    "flag": "🇱🇻",
+    "kind": "cities and settlements"
+  },
+  "EST": {
+    "name": "Estonia",
+    "cities": [
+      "Tallinn",
+      "Tartu",
+      "Narva",
+      "Pärnu",
+      "Kohtla-Järve",
+      "Viljandi"
+    ],
+    "iso2": "EE",
+    "flag": "🇪🇪",
+    "kind": "cities and settlements"
+  },
+  "DEU": {
+    "name": "Germany",
+    "cities": [
+      "Berlin",
+      "Hamburg",
+      "Munich",
+      "Cologne",
+      "Frankfurt",
+      "Stuttgart"
+    ],
+    "iso2": "DE",
+    "flag": "🇩🇪",
+    "kind": "cities and settlements"
+  },
+  "BGR": {
+    "name": "Bulgaria",
+    "cities": [
+      "Sofia",
+      "Plovdiv",
+      "Varna",
+      "Burgas",
+      "Ruse",
+      "Stara Zagora"
+    ],
+    "iso2": "BG",
+    "flag": "🇧🇬",
+    "kind": "cities and settlements"
+  },
+  "GRC": {
+    "name": "Greece",
+    "cities": [
+      "Athens",
+      "Thessaloniki",
+      "Patras",
+      "Heraklion",
+      "Larissa",
+      "Volos"
+    ],
+    "iso2": "GR",
+    "flag": "🇬🇷",
+    "kind": "cities and settlements"
+  },
+  "TUR": {
+    "name": "Turkey",
+    "cities": [
+      "Istanbul",
+      "Ankara",
+      "İzmir",
+      "Bursa",
+      "Antalya",
+      "Gaziantep"
+    ],
+    "iso2": "TR",
+    "flag": "🇹🇷",
+    "kind": "cities and settlements"
+  },
+  "ALB": {
+    "name": "Albania",
+    "cities": [
+      "Tirana",
+      "Durrës",
+      "Vlorë",
+      "Shkodër",
+      "Elbasan",
+      "Korçë"
+    ],
+    "iso2": "AL",
+    "flag": "🇦🇱",
+    "kind": "cities and settlements"
+  },
+  "HRV": {
+    "name": "Croatia",
+    "cities": [
+      "Zagreb",
+      "Split",
+      "Rijeka",
+      "Osijek",
+      "Zadar",
+      "Dubrovnik"
+    ],
+    "iso2": "HR",
+    "flag": "🇭🇷",
+    "kind": "cities and settlements"
+  },
+  "CHE": {
+    "name": "Switzerland",
+    "cities": [
+      "Zürich",
+      "Geneva",
+      "Basel",
+      "Lausanne",
+      "Bern",
+      "Winterthur"
+    ],
+    "iso2": "CH",
+    "flag": "🇨🇭",
+    "kind": "cities and settlements"
+  },
+  "LUX": {
+    "name": "Luxembourg",
+    "cities": [
+      "Luxembourg City",
+      "Esch-sur-Alzette",
+      "Differdange",
+      "Dudelange",
+      "Ettelbruck",
+      "Diekirch"
+    ],
+    "iso2": "LU",
+    "flag": "🇱🇺",
+    "kind": "cities and settlements"
+  },
+  "BEL": {
+    "name": "Belgium",
+    "cities": [
+      "Brussels",
+      "Antwerp",
+      "Ghent",
+      "Charleroi",
+      "Liège",
+      "Bruges"
+    ],
+    "iso2": "BE",
+    "flag": "🇧🇪",
+    "kind": "cities and settlements"
+  },
+  "NLD": {
+    "name": "Netherlands",
+    "cities": [
+      "Amsterdam",
+      "Rotterdam",
+      "The Hague",
+      "Utrecht",
+      "Eindhoven",
+      "Groningen"
+    ],
+    "iso2": "NL",
+    "flag": "🇳🇱",
+    "kind": "cities and settlements"
+  },
+  "PRT": {
+    "name": "Portugal",
+    "cities": [
+      "Lisbon",
+      "Porto",
+      "Coimbra",
+      "Braga",
+      "Funchal",
+      "Faro"
+    ],
+    "iso2": "PT",
+    "flag": "🇵🇹",
+    "kind": "cities and settlements"
+  },
+  "ESP": {
+    "name": "Spain",
+    "cities": [
+      "Madrid",
+      "Barcelona",
+      "Valencia",
+      "Seville",
+      "Zaragoza",
+      "Málaga"
+    ],
+    "iso2": "ES",
+    "flag": "🇪🇸",
+    "kind": "cities and settlements"
+  },
+  "IRL": {
+    "name": "Ireland",
+    "cities": [
+      "Dublin",
+      "Cork",
+      "Limerick",
+      "Galway",
+      "Waterford",
+      "Drogheda"
+    ],
+    "iso2": "IE",
+    "flag": "🇮🇪",
+    "kind": "cities and settlements"
+  },
+  "NCL": {
+    "name": "New Caledonia",
+    "cities": [
+      "Nouméa",
+      "Dumbéa",
+      "Mont-Dore",
+      "Païta",
+      "Koné",
+      "Bourail"
+    ],
+    "iso2": "NC",
+    "flag": "🇳🇨",
+    "kind": "cities and settlements"
+  },
+  "SLB": {
+    "name": "Solomon Islands",
+    "cities": [
+      "Honiara",
+      "Gizo",
+      "Auki",
+      "Noro",
+      "Tulagi",
+      "Kirakira"
+    ],
+    "iso2": "SB",
+    "flag": "🇸🇧",
+    "kind": "cities and settlements"
+  },
+  "NZL": {
+    "name": "New Zealand",
+    "cities": [
+      "Auckland",
+      "Wellington",
+      "Christchurch",
+      "Hamilton",
+      "Tauranga",
+      "Dunedin"
+    ],
+    "iso2": "NZ",
+    "flag": "🇳🇿",
+    "kind": "cities and settlements"
+  },
+  "AUS": {
+    "name": "Australia",
+    "cities": [
+      "Sydney",
+      "Melbourne",
+      "Brisbane",
+      "Perth",
+      "Adelaide",
+      "Canberra"
+    ],
+    "iso2": "AU",
+    "flag": "🇦🇺",
+    "kind": "cities and settlements"
+  },
+  "LKA": {
+    "name": "Sri Lanka",
+    "cities": [
+      "Colombo",
+      "Kandy",
+      "Galle",
+      "Jaffna",
+      "Negombo",
+      "Trincomalee"
+    ],
+    "iso2": "LK",
+    "flag": "🇱🇰",
+    "kind": "cities and settlements"
+  },
+  "CHN": {
+    "name": "China",
+    "cities": [
+      "Shanghai",
+      "Beijing",
+      "Shenzhen",
+      "Guangzhou",
+      "Chengdu",
+      "Wuhan"
+    ],
+    "iso2": "CN",
+    "flag": "🇨🇳",
+    "kind": "cities and settlements"
+  },
+  "TWN": {
+    "name": "Taiwan",
+    "cities": [
+      "Taipei",
+      "New Taipei",
+      "Taichung",
+      "Kaohsiung",
+      "Tainan",
+      "Hsinchu"
+    ],
+    "iso2": "TW",
+    "flag": "🇹🇼",
+    "kind": "cities and settlements"
+  },
+  "ITA": {
+    "name": "Italy",
+    "cities": [
+      "Rome",
+      "Milan",
+      "Naples",
+      "Turin",
+      "Palermo",
+      "Bologna"
+    ],
+    "iso2": "IT",
+    "flag": "🇮🇹",
+    "kind": "cities and settlements"
+  },
+  "DNK": {
+    "name": "Denmark",
+    "cities": [
+      "Copenhagen",
+      "Aarhus",
+      "Odense",
+      "Aalborg",
+      "Esbjerg",
+      "Randers"
+    ],
+    "iso2": "DK",
+    "flag": "🇩🇰",
+    "kind": "cities and settlements"
+  },
+  "GBR": {
+    "name": "United Kingdom",
+    "cities": [
+      "London",
+      "Birmingham",
+      "Manchester",
+      "Glasgow",
+      "Edinburgh",
+      "Cardiff"
+    ],
+    "iso2": "GB",
+    "flag": "🇬🇧",
+    "kind": "cities and settlements"
+  },
+  "ISL": {
+    "name": "Iceland",
+    "cities": [
+      "Reykjavík",
+      "Kópavogur",
+      "Hafnarfjörður",
+      "Akureyri",
+      "Reykjanesbær",
+      "Selfoss"
+    ],
+    "iso2": "IS",
+    "flag": "🇮🇸",
+    "kind": "cities and settlements"
+  },
+  "AZE": {
+    "name": "Azerbaijan",
+    "cities": [
+      "Baku",
+      "Ganja",
+      "Sumgait",
+      "Mingachevir",
+      "Lankaran",
+      "Nakhchivan"
+    ],
+    "iso2": "AZ",
+    "flag": "🇦🇿",
+    "kind": "cities and settlements"
+  },
+  "GEO": {
+    "name": "Georgia",
+    "cities": [
+      "Tbilisi",
+      "Batumi",
+      "Kutaisi",
+      "Rustavi",
+      "Gori",
+      "Poti"
+    ],
+    "iso2": "GE",
+    "flag": "🇬🇪",
+    "kind": "cities and settlements"
+  },
+  "PHL": {
+    "name": "Philippines",
+    "cities": [
+      "Manila",
+      "Quezon City",
+      "Davao City",
+      "Cebu City",
+      "Zamboanga City",
+      "Iloilo City"
+    ],
+    "iso2": "PH",
+    "flag": "🇵🇭",
+    "kind": "cities and settlements"
+  },
+  "MYS": {
+    "name": "Malaysia",
+    "cities": [
+      "Kuala Lumpur",
+      "George Town",
+      "Johor Bahru",
+      "Ipoh",
+      "Kuching",
+      "Kota Kinabalu"
+    ],
+    "iso2": "MY",
+    "flag": "🇲🇾",
+    "kind": "cities and settlements"
+  },
+  "BRN": {
+    "name": "Brunei Darussalam",
+    "cities": [
+      "Bandar Seri Begawan",
+      "Kuala Belait",
+      "Seria",
+      "Tutong",
+      "Bangar",
+      "Muara"
+    ],
+    "iso2": "BN",
+    "flag": "🇧🇳",
+    "kind": "cities and settlements"
+  },
+  "SVN": {
+    "name": "Slovenia",
+    "cities": [
+      "Ljubljana",
+      "Maribor",
+      "Celje",
+      "Kranj",
+      "Koper",
+      "Velenje"
+    ],
+    "iso2": "SI",
+    "flag": "🇸🇮",
+    "kind": "cities and settlements"
+  },
+  "FIN": {
+    "name": "Finland",
+    "cities": [
+      "Helsinki",
+      "Espoo",
+      "Tampere",
+      "Vantaa",
+      "Oulu",
+      "Turku"
+    ],
+    "iso2": "FI",
+    "flag": "🇫🇮",
+    "kind": "cities and settlements"
+  },
+  "SVK": {
+    "name": "Slovakia",
+    "cities": [
+      "Bratislava",
+      "Košice",
+      "Prešov",
+      "Žilina",
+      "Banská Bystrica",
+      "Nitra"
+    ],
+    "iso2": "SK",
+    "flag": "🇸🇰",
+    "kind": "cities and settlements"
+  },
+  "CZE": {
+    "name": "Czech Republic",
+    "cities": [
+      "Prague",
+      "Brno",
+      "Ostrava",
+      "Plzeň",
+      "Liberec",
+      "Olomouc"
+    ],
+    "iso2": "CZ",
+    "flag": "🇨🇿",
+    "kind": "cities and settlements"
+  },
+  "ERI": {
+    "name": "Eritrea",
+    "cities": [
+      "Asmara",
+      "Keren",
+      "Massawa",
+      "Assab",
+      "Mendefera",
+      "Barentu"
+    ],
+    "iso2": "ER",
+    "flag": "🇪🇷",
+    "kind": "cities and settlements"
+  },
+  "JPN": {
+    "name": "Japan",
+    "cities": [
+      "Tokyo",
+      "Osaka",
+      "Yokohama",
+      "Nagoya",
+      "Sapporo",
+      "Fukuoka"
+    ],
+    "iso2": "JP",
+    "flag": "🇯🇵",
+    "kind": "cities and settlements"
+  },
+  "PRY": {
+    "name": "Paraguay",
+    "cities": [
+      "Asunción",
+      "Ciudad del Este",
+      "San Lorenzo",
+      "Luque",
+      "Encarnación",
+      "Pedro Juan Caballero"
+    ],
+    "iso2": "PY",
+    "flag": "🇵🇾",
+    "kind": "cities and settlements"
+  },
+  "YEM": {
+    "name": "Yemen",
+    "cities": [
+      "Sana'a",
+      "Aden",
+      "Taiz",
+      "Al Hudaydah",
+      "Ibb",
+      "Mukalla"
+    ],
+    "iso2": "YE",
+    "flag": "🇾🇪",
+    "kind": "cities and settlements"
+  },
+  "SAU": {
+    "name": "Saudi Arabia",
+    "cities": [
+      "Riyadh",
+      "Jeddah",
+      "Mecca",
+      "Medina",
+      "Dammam",
+      "Taif"
+    ],
+    "iso2": "SA",
+    "flag": "🇸🇦",
+    "kind": "cities and settlements"
+  },
+  "CYP": {
+    "name": "Cyprus",
+    "cities": [
+      "Nicosia",
+      "Limassol",
+      "Larnaca",
+      "Paphos",
+      "Famagusta",
+      "Kyrenia"
+    ],
+    "kind": "cities and settlements",
+    "note": "The island is divided in practice. The simplified country includes places across the divide and does not model current jurisdiction.",
+    "iso2": "CY",
+    "flag": "🇨🇾"
+  },
+  "MAR": {
+    "name": "Morocco",
+    "cities": [
+      "Casablanca",
+      "Rabat",
+      "Fez",
+      "Marrakesh",
+      "Tangier",
+      "Agadir"
+    ],
+    "iso2": "MA",
+    "flag": "🇲🇦",
+    "kind": "cities and settlements"
+  },
+  "EGY": {
+    "name": "Egypt",
+    "cities": [
+      "Cairo",
+      "Alexandria",
+      "Giza",
+      "Port Said",
+      "Suez",
+      "Luxor"
+    ],
+    "iso2": "EG",
+    "flag": "🇪🇬",
+    "kind": "cities and settlements"
+  },
+  "LBY": {
+    "name": "Libya",
+    "cities": [
+      "Tripoli",
+      "Benghazi",
+      "Misrata",
+      "Bayda",
+      "Zawiya",
+      "Sabha"
+    ],
+    "iso2": "LY",
+    "flag": "🇱🇾",
+    "kind": "cities and settlements"
+  },
+  "ETH": {
+    "name": "Ethiopia",
+    "cities": [
+      "Addis Ababa",
+      "Dire Dawa",
+      "Adama",
+      "Gondar",
+      "Hawassa",
+      "Bahir Dar"
+    ],
+    "iso2": "ET",
+    "flag": "🇪🇹",
+    "kind": "cities and settlements"
+  },
+  "DJI": {
+    "name": "Djibouti",
+    "cities": [
+      "Djibouti City",
+      "Ali Sabieh",
+      "Tadjoura",
+      "Obock",
+      "Dikhil",
+      "Arta"
+    ],
+    "iso2": "DJ",
+    "flag": "🇩🇯",
+    "kind": "cities and settlements"
+  },
+  "SOL": {
+    "name": "Somaliland",
+    "cities": [
+      "Hargeisa",
+      "Berbera",
+      "Burao",
+      "Borama",
+      "Gabiley",
+      "Erigavo"
+    ],
+    "kind": "cities and settlements",
+    "note": "Somaliland is a disputed scenario entity. Place names and the simplified scenario do not assert recognition or current control.",
+    "iso2": null,
+    "flag": "",
+    "flagNote": "Somaliland has no distinct ISO 3166-1 code or standard regional-indicator flag emoji."
+  },
+  "UGA": {
+    "name": "Uganda",
+    "cities": [
+      "Kampala",
+      "Gulu",
+      "Mbarara",
+      "Jinja",
+      "Mbale",
+      "Entebbe"
+    ],
+    "iso2": "UG",
+    "flag": "🇺🇬",
+    "kind": "cities and settlements"
+  },
+  "RWA": {
+    "name": "Rwanda",
+    "cities": [
+      "Kigali",
+      "Huye",
+      "Musanze",
+      "Rubavu",
+      "Muhanga",
+      "Rusizi"
+    ],
+    "iso2": "RW",
+    "flag": "🇷🇼",
+    "kind": "cities and settlements"
+  },
+  "BIH": {
+    "name": "Bosnia and Herzegovina",
+    "cities": [
+      "Sarajevo",
+      "Banja Luka",
+      "Tuzla",
+      "Zenica",
+      "Mostar",
+      "Bihać"
+    ],
+    "iso2": "BA",
+    "flag": "🇧🇦",
+    "kind": "cities and settlements"
+  },
+  "MKD": {
+    "name": "North Macedonia",
+    "cities": [
+      "Skopje",
+      "Bitola",
+      "Kumanovo",
+      "Prilep",
+      "Tetovo",
+      "Ohrid"
+    ],
+    "iso2": "MK",
+    "flag": "🇲🇰",
+    "kind": "cities and settlements"
+  },
+  "SRB": {
+    "name": "Serbia",
+    "cities": [
+      "Belgrade",
+      "Novi Sad",
+      "Niš",
+      "Kragujevac",
+      "Subotica",
+      "Novi Pazar"
+    ],
+    "iso2": "RS",
+    "flag": "🇷🇸",
+    "kind": "cities and settlements"
+  },
+  "MNE": {
+    "name": "Montenegro",
+    "cities": [
+      "Podgorica",
+      "Nikšić",
+      "Pljevlja",
+      "Bijelo Polje",
+      "Bar",
+      "Cetinje"
+    ],
+    "iso2": "ME",
+    "flag": "🇲🇪",
+    "kind": "cities and settlements"
+  },
+  "KOS": {
+    "name": "Kosovo",
+    "cities": [
+      "Pristina",
+      "Prizren",
+      "Peja",
+      "Gjakova",
+      "Gjilan",
+      "Ferizaj"
+    ],
+    "kind": "cities and settlements",
+    "note": "Kosovo is a disputed scenario entity; naming does not resolve recognition.",
+    "iso2": null,
+    "flag": "🇽🇰",
+    "flagNote": "XK is a commonly used user-assigned code, not an officially assigned ISO 3166-1 code."
+  },
+  "TTO": {
+    "name": "Trinidad and Tobago",
+    "cities": [
+      "Port of Spain",
+      "San Fernando",
+      "Chaguanas",
+      "Arima",
+      "Point Fortin",
+      "Scarborough"
+    ],
+    "iso2": "TT",
+    "flag": "🇹🇹",
+    "kind": "cities and settlements"
+  },
+  "SSD": {
+    "name": "South Sudan",
+    "cities": [
+      "Juba",
+      "Wau",
+      "Malakal",
+      "Bor",
+      "Yambio",
+      "Aweil"
+    ],
+    "iso2": "SS",
+    "flag": "🇸🇸",
+    "kind": "cities and settlements"
+  },
+  "USA": {
+    "name": "United States",
+    "cities": [
+      "New York",
+      "Los Angeles",
+      "Chicago",
+      "Houston",
+      "Phoenix",
+      "Philadelphia"
+    ],
+    "iso2": "US",
+    "flag": "🇺🇸",
+    "kind": "cities and settlements"
+  },
+  "CAN": {
+    "name": "Canada",
+    "cities": [
+      "Toronto",
+      "Montréal",
+      "Vancouver",
+      "Calgary",
+      "Ottawa",
+      "Edmonton"
+    ],
+    "iso2": "CA",
+    "flag": "🇨🇦",
+    "kind": "cities and settlements"
+  },
+  "AND": {
+    "name": "Andorra",
+    "cities": [
+      "Andorra la Vella",
+      "Escaldes-Engordany",
+      "Encamp",
+      "Sant Julià de Lòria",
+      "La Massana",
+      "Ordino"
+    ],
+    "iso2": "AD",
+    "flag": "🇦🇩",
+    "kind": "cities and settlements"
+  },
+  "ATG": {
+    "name": "Antigua and Barbuda",
+    "cities": [
+      "St. John's",
+      "All Saints",
+      "Liberta",
+      "Codrington"
+    ],
+    "iso2": "AG",
+    "flag": "🇦🇬",
+    "kind": "cities and settlements"
+  },
+  "BHR": {
+    "name": "Bahrain",
+    "cities": [
+      "Manama",
+      "Muharraq",
+      "Riffa",
+      "Hamad Town",
+      "Isa Town",
+      "Sitra"
+    ],
+    "iso2": "BH",
+    "flag": "🇧🇭",
+    "kind": "cities and settlements"
+  },
+  "BRB": {
+    "name": "Barbados",
+    "cities": [
+      "Bridgetown",
+      "Speightstown",
+      "Oistins",
+      "Holetown"
+    ],
+    "iso2": "BB",
+    "flag": "🇧🇧",
+    "kind": "cities and settlements"
+  },
+  "CPV": {
+    "name": "Cabo Verde",
+    "cities": [
+      "Praia",
+      "Mindelo",
+      "Santa Maria",
+      "Assomada",
+      "Espargos",
+      "São Filipe"
+    ],
+    "iso2": "CV",
+    "flag": "🇨🇻",
+    "kind": "cities and settlements"
+  },
+  "COM": {
+    "name": "Comoros",
+    "cities": [
+      "Moroni",
+      "Mutsamudu",
+      "Fomboni",
+      "Domoni",
+      "Mitsamiouli",
+      "Ouani"
+    ],
+    "iso2": "KM",
+    "flag": "🇰🇲",
+    "kind": "cities and settlements"
+  },
+  "DMA": {
+    "name": "Dominica",
+    "cities": [
+      "Roseau",
+      "Portsmouth",
+      "Marigot",
+      "Mahaut"
+    ],
+    "iso2": "DM",
+    "flag": "🇩🇲",
+    "kind": "cities and settlements"
+  },
+  "GRD": {
+    "name": "Grenada",
+    "cities": [
+      "St. George's",
+      "Gouyave",
+      "Grenville",
+      "Victoria",
+      "Hillsborough",
+      "Sauteurs"
+    ],
+    "iso2": "GD",
+    "flag": "🇬🇩",
+    "kind": "cities and settlements"
+  },
+  "KIR": {
+    "name": "Kiribati",
+    "cities": [
+      "Betio",
+      "Bairiki",
+      "Bikenibeu",
+      "Tabwakea",
+      "London",
+      "Bonriki"
+    ],
+    "kind": "settlements",
+    "note": "Includes villages in South Tarawa and on Kiritimati; these are not separate large cities.",
+    "iso2": "KI",
+    "flag": "🇰🇮"
+  },
+  "LIE": {
+    "name": "Liechtenstein",
+    "cities": [
+      "Vaduz",
+      "Schaan",
+      "Triesen",
+      "Balzers",
+      "Eschen",
+      "Mauren"
+    ],
+    "iso2": "LI",
+    "flag": "🇱🇮",
+    "kind": "cities and settlements"
+  },
+  "MDV": {
+    "name": "Maldives",
+    "cities": [
+      "Malé",
+      "Addu City",
+      "Fuvahmulah",
+      "Kulhudhuffushi",
+      "Thinadhoo",
+      "Naifaru"
+    ],
+    "iso2": "MV",
+    "flag": "🇲🇻",
+    "kind": "cities and settlements"
+  },
+  "MHL": {
+    "name": "Marshall Islands",
+    "cities": [
+      "Delap-Uliga-Djarrit",
+      "Ebeye",
+      "Laura",
+      "Jabor",
+      "Arno",
+      "Wotje"
+    ],
+    "kind": "settlements",
+    "note": "Delap-Uliga-Djarrit is the urban settlement of Majuro; Laura is a distinct settlement on the same atoll.",
+    "iso2": "MH",
+    "flag": "🇲🇭"
+  },
+  "MLT": {
+    "name": "Malta",
+    "cities": [
+      "Valletta",
+      "Birkirkara",
+      "Mosta",
+      "Sliema",
+      "St. Paul's Bay",
+      "Victoria"
+    ],
+    "iso2": "MT",
+    "flag": "🇲🇹",
+    "kind": "cities and settlements"
+  },
+  "MUS": {
+    "name": "Mauritius",
+    "cities": [
+      "Port Louis",
+      "Beau Bassin-Rose Hill",
+      "Vacoas-Phoenix",
+      "Curepipe",
+      "Quatre Bornes",
+      "Mahébourg"
+    ],
+    "iso2": "MU",
+    "flag": "🇲🇺",
+    "kind": "cities and settlements"
+  },
+  "FSM": {
+    "name": "Federated States of Micronesia",
+    "cities": [
+      "Palikir",
+      "Weno",
+      "Kolonia",
+      "Tofol",
+      "Colonia",
+      "Lelu"
+    ],
+    "iso2": "FM",
+    "flag": "🇫🇲",
+    "kind": "cities and settlements"
+  },
+  "MCO": {
+    "name": "Monaco",
+    "cities": [
+      "Monaco-Ville",
+      "Monte-Carlo",
+      "La Condamine",
+      "Fontvieille"
+    ],
+    "kind": "quarters",
+    "note": "Monaco is a city-state. Entries are real named quarters within the same city.",
+    "iso2": "MC",
+    "flag": "🇲🇨"
+  },
+  "NRU": {
+    "name": "Nauru",
+    "cities": [
+      "Yaren",
+      "Arijejen",
+      "Denigomodu",
+      "Yangor",
+      "Anabar",
+      "Menen"
+    ],
+    "kind": "settlements",
+    "note": "Includes the named Yaren district alongside real settlements. These are not all incorporated cities.",
+    "iso2": "NR",
+    "flag": "🇳🇷"
+  },
+  "PLW": {
+    "name": "Palau",
+    "cities": [
+      "Koror",
+      "Ngerulmud",
+      "Melekeok",
+      "Ngetkib",
+      "Kloulklubed"
+    ],
+    "iso2": "PW",
+    "flag": "🇵🇼",
+    "kind": "cities and settlements"
+  },
+  "KNA": {
+    "name": "Saint Kitts and Nevis",
+    "cities": [
+      "Basseterre",
+      "Charlestown",
+      "Sandy Point Town",
+      "Dieppe Bay Town",
+      "Cayon"
+    ],
+    "iso2": "KN",
+    "flag": "🇰🇳",
+    "kind": "cities and settlements"
+  },
+  "LCA": {
+    "name": "Saint Lucia",
+    "cities": [
+      "Castries",
+      "Vieux Fort",
+      "Soufrière",
+      "Gros Islet",
+      "Micoud",
+      "Dennery"
+    ],
+    "iso2": "LC",
+    "flag": "🇱🇨",
+    "kind": "cities and settlements"
+  },
+  "VCT": {
+    "name": "Saint Vincent and the Grenadines",
+    "cities": [
+      "Kingstown",
+      "Georgetown",
+      "Barrouallie",
+      "Chateaubelair",
+      "Port Elizabeth",
+      "Layou"
+    ],
+    "iso2": "VC",
+    "flag": "🇻🇨",
+    "kind": "cities and settlements"
+  },
+  "WSM": {
+    "name": "Samoa",
+    "cities": [
+      "Apia",
+      "Asau",
+      "Salelologa",
+      "Leulumoega",
+      "Safotu",
+      "Lufilufi"
+    ],
+    "iso2": "WS",
+    "flag": "🇼🇸",
+    "kind": "cities and settlements"
+  },
+  "SMR": {
+    "name": "San Marino",
+    "cities": [
+      "City of San Marino",
+      "Serravalle",
+      "Borgo Maggiore",
+      "Domagnano",
+      "Fiorentino",
+      "Acquaviva"
+    ],
+    "iso2": "SM",
+    "flag": "🇸🇲",
+    "kind": "cities and settlements"
+  },
+  "STP": {
+    "name": "São Tomé and Príncipe",
+    "cities": [
+      "São Tomé",
+      "Santo António",
+      "Trindade",
+      "Neves",
+      "Santana",
+      "Guadalupe"
+    ],
+    "iso2": "ST",
+    "flag": "🇸🇹",
+    "kind": "cities and settlements"
+  },
+  "SYC": {
+    "name": "Seychelles",
+    "cities": [
+      "Victoria",
+      "Anse Boileau",
+      "Beau Vallon",
+      "Anse Royale"
+    ],
+    "iso2": "SC",
+    "flag": "🇸🇨",
+    "kind": "cities and settlements"
+  },
+  "SGP": {
+    "name": "Singapore",
+    "cities": [
+      "Downtown Core",
+      "Tampines",
+      "Woodlands",
+      "Jurong East",
+      "Queenstown",
+      "Bedok"
+    ],
+    "kind": "planning areas",
+    "note": "Singapore is a city-state. Entries are real URA planning areas within the same city.",
+    "iso2": "SG",
+    "flag": "🇸🇬"
+  },
+  "TON": {
+    "name": "Tonga",
+    "cities": [
+      "Nuku'alofa",
+      "Neiafu",
+      "Haveluloto",
+      "Pangai",
+      "Ohonua",
+      "Vaini"
+    ],
+    "iso2": "TO",
+    "flag": "🇹🇴",
+    "kind": "cities and settlements"
+  },
+  "TUV": {
+    "name": "Tuvalu",
+    "cities": [
+      "Funafuti",
+      "Savave",
+      "Asau",
+      "Tanrake",
+      "Teava",
+      "Kulia"
+    ],
+    "kind": "settlements",
+    "note": "Includes island villages and Funafuti. These are not separate large cities.",
+    "iso2": "TV",
+    "flag": "🇹🇻"
+  },
+  "VAT": {
+    "name": "Holy See (Vatican City)",
+    "cities": [
+      "Vatican City"
+    ],
+    "kind": "city-state",
+    "note": "Vatican City is the sole settlement; extra cities are not fabricated.",
+    "iso2": "VA",
+    "flag": "🇻🇦"
+  }
+}

@@ -1,0 +1,485 @@
+[
+  {
+    "id": "AND",
+    "name": "Andorra",
+    "cities": [
+      "Andorra la Vella",
+      "Escaldes-Engordany",
+      "Encamp",
+      "Sant Julià de Lòria",
+      "La Massana",
+      "Ordino"
+    ],
+    "lon": 1.52,
+    "lat": 42.51,
+    "iso2": "AD",
+    "flag": "🇦🇩",
+    "kind": "cities and settlements"
+  },
+  {
+    "id": "ATG",
+    "name": "Antigua and Barbuda",
+    "cities": [
+      "St. John's",
+      "All Saints",
+      "Liberta",
+      "Codrington"
+    ],
+    "lon": -61.8,
+    "lat": 17.1,
+    "iso2": "AG",
+    "flag": "🇦🇬",
+    "kind": "cities and settlements"
+  },
+  {
+    "id": "BHR",
+    "name": "Bahrain",
+    "cities": [
+      "Manama",
+      "Muharraq",
+      "Riffa",
+      "Hamad Town",
+      "Isa Town",
+      "Sitra"
+    ],
+    "lon": 50.56,
+    "lat": 26.07,
+    "iso2": "BH",
+    "flag": "🇧🇭",
+    "kind": "cities and settlements"
+  },
+  {
+    "id": "BRB",
+    "name": "Barbados",
+    "cities": [
+      "Bridgetown",
+      "Speightstown",
+      "Oistins",
+      "Holetown"
+    ],
+    "lon": -59.55,
+    "lat": 13.19,
+    "iso2": "BB",
+    "flag": "🇧🇧",
+    "kind": "cities and settlements"
+  },
+  {
+    "id": "CPV",
+    "name": "Cabo Verde",
+    "cities": [
+      "Praia",
+      "Mindelo",
+      "Santa Maria",
+      "Assomada",
+      "Espargos",
+      "São Filipe"
+    ],
+    "lon": -23.51,
+    "lat": 14.92,
+    "iso2": "CV",
+    "flag": "🇨🇻",
+    "kind": "cities and settlements"
+  },
+  {
+    "id": "COM",
+    "name": "Comoros",
+    "cities": [
+      "Moroni",
+      "Mutsamudu",
+      "Fomboni",
+      "Domoni",
+      "Mitsamiouli",
+      "Ouani"
+    ],
+    "lon": 43.25,
+    "lat": -11.65,
+    "iso2": "KM",
+    "flag": "🇰🇲",
+    "kind": "cities and settlements"
+  },
+  {
+    "id": "DMA",
+    "name": "Dominica",
+    "cities": [
+      "Roseau",
+      "Portsmouth",
+      "Marigot",
+      "Mahaut"
+    ],
+    "lon": -61.37,
+    "lat": 15.42,
+    "iso2": "DM",
+    "flag": "🇩🇲",
+    "kind": "cities and settlements"
+  },
+  {
+    "id": "GRD",
+    "name": "Grenada",
+    "cities": [
+      "St. George's",
+      "Gouyave",
+      "Grenville",
+      "Victoria",
+      "Hillsborough",
+      "Sauteurs"
+    ],
+    "lon": -61.68,
+    "lat": 12.12,
+    "iso2": "GD",
+    "flag": "🇬🇩",
+    "kind": "cities and settlements"
+  },
+  {
+    "id": "KIR",
+    "name": "Kiribati",
+    "cities": [
+      "Betio",
+      "Bairiki",
+      "Bikenibeu",
+      "Tabwakea",
+      "London",
+      "Bonriki"
+    ],
+    "lon": 173.0,
+    "lat": 1.43,
+    "kind": "settlements",
+    "note": "Includes villages in South Tarawa and on Kiritimati; these are not separate large cities.",
+    "iso2": "KI",
+    "flag": "🇰🇮"
+  },
+  {
+    "id": "LIE",
+    "name": "Liechtenstein",
+    "cities": [
+      "Vaduz",
+      "Schaan",
+      "Triesen",
+      "Balzers",
+      "Eschen",
+      "Mauren"
+    ],
+    "lon": 9.55,
+    "lat": 47.17,
+    "iso2": "LI",
+    "flag": "🇱🇮",
+    "kind": "cities and settlements"
+  },
+  {
+    "id": "MDV",
+    "name": "Maldives",
+    "cities": [
+      "Malé",
+      "Addu City",
+      "Fuvahmulah",
+      "Kulhudhuffushi",
+      "Thinadhoo",
+      "Naifaru"
+    ],
+    "lon": 73.51,
+    "lat": 4.18,
+    "iso2": "MV",
+    "flag": "🇲🇻",
+    "kind": "cities and settlements"
+  },
+  {
+    "id": "MHL",
+    "name": "Marshall Islands",
+    "cities": [
+      "Delap-Uliga-Djarrit",
+      "Ebeye",
+      "Laura",
+      "Jabor",
+      "Arno",
+      "Wotje"
+    ],
+    "lon": 171.38,
+    "lat": 7.09,
+    "kind": "settlements",
+    "note": "Delap-Uliga-Djarrit is the urban settlement of Majuro; Laura is a distinct settlement on the same atoll.",
+    "iso2": "MH",
+    "flag": "🇲🇭"
+  },
+  {
+    "id": "MLT",
+    "name": "Malta",
+    "cities": [
+      "Valletta",
+      "Birkirkara",
+      "Mosta",
+      "Sliema",
+      "St. Paul's Bay",
+      "Victoria"
+    ],
+    "lon": 14.48,
+    "lat": 35.91,
+    "iso2": "MT",
+    "flag": "🇲🇹",
+    "kind": "cities and settlements"
+  },
+  {
+    "id": "MUS",
+    "name": "Mauritius",
+    "cities": [
+      "Port Louis",
+      "Beau Bassin-Rose Hill",
+      "Vacoas-Phoenix",
+      "Curepipe",
+      "Quatre Bornes",
+      "Mahébourg"
+    ],
+    "lon": 57.55,
+    "lat": -20.28,
+    "iso2": "MU",
+    "flag": "🇲🇺",
+    "kind": "cities and settlements"
+  },
+  {
+    "id": "FSM",
+    "name": "Federated States of Micronesia",
+    "cities": [
+      "Palikir",
+      "Weno",
+      "Kolonia",
+      "Tofol",
+      "Colonia",
+      "Lelu"
+    ],
+    "lon": 158.16,
+    "lat": 6.92,
+    "iso2": "FM",
+    "flag": "🇫🇲",
+    "kind": "cities and settlements"
+  },
+  {
+    "id": "MCO",
+    "name": "Monaco",
+    "cities": [
+      "Monaco-Ville",
+      "Monte-Carlo",
+      "La Condamine",
+      "Fontvieille"
+    ],
+    "lon": 7.42,
+    "lat": 43.74,
+    "kind": "quarters",
+    "note": "Monaco is a city-state. Entries are real named quarters within the same city.",
+    "iso2": "MC",
+    "flag": "🇲🇨"
+  },
+  {
+    "id": "NRU",
+    "name": "Nauru",
+    "cities": [
+      "Yaren",
+      "Arijejen",
+      "Denigomodu",
+      "Yangor",
+      "Anabar",
+      "Menen"
+    ],
+    "lon": 166.93,
+    "lat": -0.52,
+    "kind": "settlements",
+    "note": "Includes the named Yaren district alongside real settlements. These are not all incorporated cities.",
+    "iso2": "NR",
+    "flag": "🇳🇷"
+  },
+  {
+    "id": "PLW",
+    "name": "Palau",
+    "cities": [
+      "Koror",
+      "Ngerulmud",
+      "Melekeok",
+      "Ngetkib",
+      "Kloulklubed"
+    ],
+    "lon": 134.56,
+    "lat": 7.5,
+    "iso2": "PW",
+    "flag": "🇵🇼",
+    "kind": "cities and settlements"
+  },
+  {
+    "id": "KNA",
+    "name": "Saint Kitts and Nevis",
+    "cities": [
+      "Basseterre",
+      "Charlestown",
+      "Sandy Point Town",
+      "Dieppe Bay Town",
+      "Cayon"
+    ],
+    "lon": -62.76,
+    "lat": 17.3,
+    "iso2": "KN",
+    "flag": "🇰🇳",
+    "kind": "cities and settlements"
+  },
+  {
+    "id": "LCA",
+    "name": "Saint Lucia",
+    "cities": [
+      "Castries",
+      "Vieux Fort",
+      "Soufrière",
+      "Gros Islet",
+      "Micoud",
+      "Dennery"
+    ],
+    "lon": -60.98,
+    "lat": 13.91,
+    "iso2": "LC",
+    "flag": "🇱🇨",
+    "kind": "cities and settlements"
+  },
+  {
+    "id": "VCT",
+    "name": "Saint Vincent and the Grenadines",
+    "cities": [
+      "Kingstown",
+      "Georgetown",
+      "Barrouallie",
+      "Chateaubelair",
+      "Port Elizabeth",
+      "Layou"
+    ],
+    "lon": -61.21,
+    "lat": 13.25,
+    "iso2": "VC",
+    "flag": "🇻🇨",
+    "kind": "cities and settlements"
+  },
+  {
+    "id": "WSM",
+    "name": "Samoa",
+    "cities": [
+      "Apia",
+      "Asau",
+      "Salelologa",
+      "Leulumoega",
+      "Safotu",
+      "Lufilufi"
+    ],
+    "lon": -172.1,
+    "lat": -13.8,
+    "iso2": "WS",
+    "flag": "🇼🇸",
+    "kind": "cities and settlements"
+  },
+  {
+    "id": "SMR",
+    "name": "San Marino",
+    "cities": [
+      "City of San Marino",
+      "Serravalle",
+      "Borgo Maggiore",
+      "Domagnano",
+      "Fiorentino",
+      "Acquaviva"
+    ],
+    "lon": 12.45,
+    "lat": 43.94,
+    "iso2": "SM",
+    "flag": "🇸🇲",
+    "kind": "cities and settlements"
+  },
+  {
+    "id": "STP",
+    "name": "São Tomé and Príncipe",
+    "cities": [
+      "São Tomé",
+      "Santo António",
+      "Trindade",
+      "Neves",
+      "Santana",
+      "Guadalupe"
+    ],
+    "lon": 6.73,
+    "lat": 0.34,
+    "iso2": "ST",
+    "flag": "🇸🇹",
+    "kind": "cities and settlements"
+  },
+  {
+    "id": "SYC",
+    "name": "Seychelles",
+    "cities": [
+      "Victoria",
+      "Anse Boileau",
+      "Beau Vallon",
+      "Anse Royale"
+    ],
+    "lon": 55.45,
+    "lat": -4.62,
+    "iso2": "SC",
+    "flag": "🇸🇨",
+    "kind": "cities and settlements"
+  },
+  {
+    "id": "SGP",
+    "name": "Singapore",
+    "cities": [
+      "Downtown Core",
+      "Tampines",
+      "Woodlands",
+      "Jurong East",
+      "Queenstown",
+      "Bedok"
+    ],
+    "lon": 103.85,
+    "lat": 1.29,
+    "kind": "planning areas",
+    "note": "Singapore is a city-state. Entries are real URA planning areas within the same city.",
+    "iso2": "SG",
+    "flag": "🇸🇬"
+  },
+  {
+    "id": "TON",
+    "name": "Tonga",
+    "cities": [
+      "Nuku'alofa",
+      "Neiafu",
+      "Haveluloto",
+      "Pangai",
+      "Ohonua",
+      "Vaini"
+    ],
+    "lon": -175.2,
+    "lat": -21.14,
+    "iso2": "TO",
+    "flag": "🇹🇴",
+    "kind": "cities and settlements"
+  },
+  {
+    "id": "TUV",
+    "name": "Tuvalu",
+    "cities": [
+      "Funafuti",
+      "Savave",
+      "Asau",
+      "Tanrake",
+      "Teava",
+      "Kulia"
+    ],
+    "lon": 179.19,
+    "lat": -8.52,
+    "kind": "settlements",
+    "note": "Includes island villages and Funafuti. These are not separate large cities.",
+    "iso2": "TV",
+    "flag": "🇹🇻"
+  },
+  {
+    "id": "VAT",
+    "name": "Holy See (Vatican City)",
+    "cities": [
+      "Vatican City"
+    ],
+    "lon": 12.45,
+    "lat": 41.9,
+    "kind": "city-state",
+    "note": "Vatican City is the sole settlement; extra cities are not fabricated.",
+    "iso2": "VA",
+    "flag": "🇻🇦"
+  }
+]

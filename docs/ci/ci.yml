@@ -1,0 +1,57 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  engine-invariants:
+    name: Engine invariants
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run every suite
+        run: |
+          set -euo pipefail
+          for suite in tests/check-*.cjs; do
+            echo "::group::$suite"
+            node "$suite"
+            echo "::endgroup::"
+          done
+
+  reproducible-build:
+    name: Build reproduces the shipped file
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Pillow
+        run: pip install --quiet pillow
+
+      - name: Rebuild the chain from src/base
+        run: |
+          set -euo pipefail
+          python3 src/build/build-v4.py
+          python3 src/build/build-v5.py
+          python3 src/build/build-v6.py
+          python3 src/build/build-v7.py
+
+      - name: The rebuild must match the committed artifact byte for byte
+        run: |
+          if ! cmp -s build/v7.html dist/sovereign-v7.html; then
+            echo "::error::dist/sovereign-v7.html is stale. Re-run the build scripts and commit."
+            diff <(wc -c < build/v7.html) <(wc -c < dist/sovereign-v7.html) || true
+            exit 1
+          fi
+          echo "Reproduced dist/sovereign-v7.html exactly."
