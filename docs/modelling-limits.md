@@ -52,8 +52,12 @@ This is still a scenario, not a historical atlas, and three limits matter:
 - **Territory is approximated** by grouping present-day polygons. The internal borders of the
   period are not drawn, and where a modern border differs from the historical one, the modern one
   is shown.
-- **Partitioned states are left unified.** The two Germanys, the two Vietnams and the two Yemens
-  appear as one country each, labelled to say so, because the polygon data cannot be split.
+- **Partitioned states are cut along a fitted line.** Since v9 the two Germanys, the two Vietnams
+  and the two Yemens are separate countries with separate shapes. The cut lines are hand-fitted
+  from well-known geography, not surveyed boundary data, and the underlying outlines are simplified
+  — Germany is 58 points. Each piece is checked against its historical land area at build time
+  (Germany within 4%, Vietnam within 3%, Yemen within 17%), which catches a badly placed line but
+  does not make the border accurate at any particular point.
 - **Figures for merged states are scenario assumptions.** The recognisable blocs carry hand-set
   population and output roughly matching the historical order of magnitude; everything else is the
   uniform era scaling applied to present-day values, which under-counts economies that grew more

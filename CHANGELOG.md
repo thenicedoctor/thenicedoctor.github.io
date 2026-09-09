@@ -4,6 +4,25 @@ Versions are the save-format version (`S.version`). Each is produced by its own 
 the previous version's output, and each bumps `newGame`, `validSave` and `migrateSave` together so
 older saves keep loading.
 
+## v9 — Divided countries
+
+- **Germany, Vietnam and Yemen are split where they were divided.** In 1970 you can lead West or
+  East Germany, North or South Vietnam, North or South Yemen; in 1985 Germany and Yemen are still
+  divided and Vietnam is not; from 2000 all three are whole.
+- Their map shapes are genuinely cut, not relabelled. `src/build/split-polygons.py` slices the
+  country polygon along a border polyline fitted to well-known geography, then **checks each piece
+  against the historical land area and fails the build if it is out of tolerance** — West and East
+  Germany come out within 4%, the two Vietnams within 3%, the two Yemens within 17%. Vietnam is cut
+  at the 17th parallel, the demarcation line agreed at Geneva in 1954.
+- Period cities: East Berlin, Leipzig, Dresden and Karl-Marx-Stadt in the east; West Berlin,
+  Hamburg and Munich in the west; Hanoi and Haiphong in the north, Saigon and Da Nang in the south;
+  Sana'a and Ta'izz against Aden and Mukalla.
+- The v7/v8 stand-in labels ("Germany · FRG and GDR") are gone, since the map can now show it.
+
+**Limits.** The cut lines are hand-fitted, not surveyed boundary data, and the underlying outlines
+are simplified — Germany is 58 points. No border or name here is a comment on any territorial
+dispute, historical or current.
+
 ## v8 — Historical states
 
 - **The map follows the era.** Starting in 1970 or 1985 puts the **Soviet Union** (15 republics as

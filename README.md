@@ -7,7 +7,7 @@
 [**▶ Play**](https://thenicedoctor.github.io/) · [Economic model](docs/economic-model.md) · [Architecture](docs/architecture.md) · [Modelling limits](docs/modelling-limits.md) · [Changelog](CHANGELOG.md)
 
 ![license](https://img.shields.io/badge/license-MIT-blue)
-![engine suites](https://img.shields.io/badge/engine%20suites-7%20passing-brightgreen)
+![engine suites](https://img.shields.io/badge/engine%20suites-8%20passing-brightgreen)
 ![dependencies](https://img.shields.io/badge/runtime%20dependencies-0-brightgreen)
 
 <img src="hero.png" alt="The Sovereign interface: navigation rail, national statistics, world map and policy panel." width="820">
@@ -30,6 +30,7 @@ account, no server, no network calls. Save it to disk and it still works.
 | Policy controls | 63, from income-tax brackets to central-bank independence |
 | Start eras | 1970, 1985, 2000, 2026 — **with the states of the period** |
 | Historical states | Soviet Union, Yugoslavia, Czechoslovakia, Serbia and Montenegro |
+| Divided countries | East/West Germany, North/South Vietnam, North/South Yemen |
 | Difficulty modes | Easy (no national debt), Medium, Hard |
 | File size | ~500 KB, everything embedded |
 
@@ -58,10 +59,15 @@ period-appropriate trade barriers, capital controls, central-bank independence a
 regimes — Bretton Woods pegs in 1970, managed floats in 1985. The productivity frontier the
 convergence model chases moves with the era, so catching up in 1970 means catching up to 1970.
 
-Since v8 the map follows the era too. In 1970 the Soviet Union covers fifteen present-day
-countries as one state with Moscow, Leningrad, Sverdlovsk and Alma-Ata among its cities;
+The map follows the era too. In 1970 the Soviet Union covers fifteen present-day countries as one
+state with Moscow, Leningrad, Sverdlovsk and Alma-Ata among its cities; **Germany, Vietnam and
+Yemen are each split in two**, with East Berlin against West Berlin and Hanoi against Saigon;
 Bangladesh, the UAE and Zimbabwe do not exist yet; Sri Lanka is Ceylon and Burkina Faso is Upper
 Volta.
+
+The divided countries are genuinely cut, not relabelled: `src/build/split-polygons.py` slices the
+polygon along a fitted border and fails the build if a piece is too far from the historical land
+area.
 
 > **These are textbook relationships and scenario assumptions, simplified for playability.**
 > Nothing is estimated from data or calibrated to a real country, no figure the game displays is a
@@ -72,11 +78,11 @@ Volta.
 
 ```
 src/base/      sovereign-v3.html      the artifact the build chain starts from
-src/addons/    v4…v8-addon.js         each version's new behaviour, layered by wrapping functions
-src/build/     build-v4…v8.py         exact-string patch scripts, one per version
+src/addons/    v4…v9-addon.js         each version's new behaviour, layered by wrapping functions
+src/build/     build-v4…v9.py         exact-string patch scripts, one per version
 src/data/      map polygons, city catalogue, provenance notes
-tests/         check-game…check-v8.cjs   engine invariants, run in a vm sandbox
-dist/          sovereign-v8.html      the built game
+tests/         check-game…check-v9.cjs   engine invariants, run in a vm sandbox
+dist/          sovereign-v9.html      the built game
 docs/          architecture, economic model, modelling limits, CI workflows
 index.html     the published landing page  (a user Pages site, served from the root)
 play/          the published game
@@ -93,7 +99,8 @@ python3 src/build/build-v4.py    # src/base/sovereign-v3.html -> v4
 python3 src/build/build-v5.py    # cities, trade, central bank, production function
 python3 src/build/build-v6.py    # difficulty modes, optional national debt
 python3 src/build/build-v7.py    # eras, dispatches, mobile layout
-python3 src/build/build-v8.py    # historical states per era  -> dist/
+python3 src/build/build-v8.py    # historical states per era
+python3 src/build/build-v9.py    # divided countries  -> dist/
 python3 src/build/build-site.py  # assembles the published site at the repository root
 ```
 
@@ -109,11 +116,11 @@ state coexists with its predecessor, save migration from every earlier version, 
 stability run in each difficulty mode and era.
 
 ```bash
-node tests/check-v8.cjs
+node tests/check-v9.cjs
 for f in tests/check-*.cjs; do node "$f" || exit 1; done
 ```
 
-All seven suites pass. Ready-to-use GitHub Actions workflows are in
+All eight suites pass. Ready-to-use GitHub Actions workflows are in
 [`docs/ci/`](docs/ci/) — see [docs/ci/README.md](docs/ci/README.md) to enable them.
 
 ## Contributing
