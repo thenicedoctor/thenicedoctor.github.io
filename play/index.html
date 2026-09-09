@@ -96,6 +96,8 @@ body.mapfocus header,body.mapfocus nav,body.mapfocus .inspector,body.mapfocus .s
  .modegrid{gap:11px}
  .modecard{padding:13px}
  .modecard p{font-size:13px}
+ .eracard{cursor:pointer}
+ .eracard:active{border-color:var(--accent)}
  .modelist{margin:9px 0 12px}
  .policy label{font-size:14px}
  /* The sticky rail is shorter than the page, which left its column unpainted at the bottom. */
@@ -1427,7 +1429,7 @@ function eraCardV7(k){const e=ERAS[k];
  +'<li>Population: <b>'+(e.popScale===1?'as seeded':'≈'+Math.round(e.popScale*100)+'% of 2026')+'</b></li>'
  +'<li>Exchange rates: <b>'+(e.fx==='peg'?'fixed pegs':e.fx==='managed'?'managed floats':'as seeded')+'</b></li>'
  +'<li>Central banks: <b>'+(e.policy.cbIndependence===undefined?'as seeded':e.policy.cbIndependence<40?'government-directed':e.policy.cbIndependence<60?'partly independent':'independent')+'</b></li>'
- +'</ul><button class="primary full" data-era-start="'+k+'">Start in '+e.year+'</button></div>';}
+ +'</ul><button class="primary full" type="button" tabindex="-1">Start in '+e.year+'</button></div>';}
 const v6StartScreenV7=startScreen;
 startScreen=function(){
  v6StartScreenV7();
@@ -1436,11 +1438,13 @@ startScreen=function(){
   '<div class="block"></div><h3>Or start in another decade</h3>'
   +'<p>Each era rebuilds the world at that date with period-appropriate output, population, prices, trade barriers and central-bank arrangements. Difficulty applies on top.</p>'
   +'<div class="modegrid eragrid">'+ERA_KEYS.filter(k=>k!=='e2026').map(eraCardV7).join('')+'</div>');
- for(const b of box.querySelectorAll('button[data-era-start]'))
+ for(const b of box.querySelectorAll('[data-era-start]')){
+  b.setAttribute('role','button');b.setAttribute('tabindex','0');
+  b.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();b.click();}};
   b.onclick=()=>{const k=b.dataset.eraStart,mode=difficultyOf();
    newGame();applyDifficulty(mode,true);applyEra(k);
    addEvent('A world in '+ERAS[k].year,ERAS[k].blurb,'dispatch');
-   closeModal();render();requestDraw();toast('New world: '+ERAS[k].year+' · '+DIFFICULTY[mode].name+'.');};};
+   closeModal();render();requestDraw();toast('New world: '+ERAS[k].year+' · '+DIFFICULTY[mode].name+'.');};}};
 
 // ---------- lifecycle ----------
 const v6PrepareV7=prepareV4Month;
