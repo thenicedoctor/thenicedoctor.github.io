@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sovereign — Political Sandbox | Free Browser Strategy Game</title>
+<meta name="description" content="Sovereign is a free geopolitical strategy game that runs in your browser. Lead any of 204 countries: set tax, welfare and monetary policy, run a central bank, manage 1,198 named cities, negotiate trade, and watch a production-function economy respond month by month.">
+<link rel="canonical" href="https://thenicedoctor.github.io/">
+<meta name="author" content="thenicedoctor">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="theme-color" content="#101619">
+<meta name="color-scheme" content="dark">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sovereign">
+<meta property="og:title" content="Sovereign — Political Sandbox">
+<meta property="og:description" content="A free browser strategy game. Lead any of 204 countries through economic policy, central banking, city management and diplomacy. No install, no account, runs offline.">
+<meta property="og:url" content="https://thenicedoctor.github.io/">
+<meta property="og:image" content="https://thenicedoctor.github.io/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sovereign — a world map with policy panels, from the browser strategy game.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sovereign — Political Sandbox">
+<meta name="twitter:description" content="Lead any of 204 countries. Economic policy, a modelled central bank, 1,198 named cities and bilateral trade — free, in your browser.">
+<meta name="twitter:image" content="https://thenicedoctor.github.io/og.png">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"VideoGame","name":"Sovereign — Political Sandbox","url":"https://thenicedoctor.github.io/","image":"https://thenicedoctor.github.io/og.png",
+"description":"A free browser-based geopolitical strategy game. Lead any of 204 countries through fiscal policy, monetary policy, city management, trade and diplomacy, simulated month by month.",
+"applicationCategory":"GameApplication","genre":["Strategy","Simulation","Government simulation","Economic simulation"],
+"gamePlatform":"Web browser","operatingSystem":"Any modern web browser","playMode":"SinglePlayer",
+"author":{"@type":"Person","name":"thenicedoctor"},
+"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock"},
+"inLanguage":"en"},
+{"@type":"WebSite","name":"Sovereign","url":"https://thenicedoctor.github.io/","inLanguage":"en"},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Is Sovereign free to play?","acceptedAnswer":{"@type":"Answer","text":"Yes. Sovereign is free, needs no account and no installation. It is a single HTML file that runs entirely in your browser."}},
+{"@type":"Question","name":"Does Sovereign work offline?","acceptedAnswer":{"@type":"Answer","text":"Yes. Once the page has loaded, the whole simulation runs locally in your browser. Nothing is sent to a server, and saved games are stored on your own device."}},
+{"@type":"Question","name":"How many countries can you play in Sovereign?","acceptedAnswer":{"@type":"Answer","text":"All 204 entities on the map, covering every UN member state, both observer states, and nine additional scenario entities. Each has named cities and its own starting economy."}},
+{"@type":"Question","name":"Is Sovereign a realistic economic simulation?","acceptedAnswer":{"@type":"Answer","text":"It uses recognisable textbook relationships — a Cobb-Douglas production function, a Taylor-type monetary policy rule, Okun's law and an expectations-augmented Phillips curve — but every coefficient is chosen for playability. It is a game, not a forecasting model, and no figure in it is a statistic about a real country."}}]}]}
+</script>
+
+<style>
+:root{color-scheme:dark;--bg:#101619;--panel:#192024;--raised:#20292d;--line:#303b3e;--text:#e9eeeb;--muted:#97a5a5;--accent:#e8bd71;--green:#8bb8a4;--blue:#91b5cc;--radius:9px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+a{color:var(--accent)}
+h1,h2,h3{line-height:1.22;font-weight:560;letter-spacing:-.01em;margin:0}
+h1{font-size:clamp(34px,6vw,58px)}
+h2{font-size:clamp(23px,3.4vw,31px);margin-bottom:14px}
+h3{font-size:17px;margin-bottom:6px}
+p{margin:0 0 16px}
+.lede{font-size:clamp(17px,2.2vw,20px);color:var(--muted);max-width:62ch}
+header{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(16,22,25,.92);backdrop-filter:blur(9px);z-index:9}
+.bar{display:flex;align-items:center;gap:14px;height:62px}
+.mark{display:flex;align-items:center;gap:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:14px;color:var(--text);text-decoration:none}
+.mark svg{flex:none}
+nav.top{margin-left:auto;display:flex;gap:20px;font-size:14.5px}
+nav.top a{color:var(--muted);text-decoration:none}
+nav.top a:hover{color:var(--text)}
+@media(max-width:700px){nav.top{display:none}}
+.hero{padding:74px 0 60px;border-bottom:1px solid var(--line)}
+.btn{display:inline-block;padding:14px 30px;border-radius:var(--radius);font-weight:560;font-size:16px;text-decoration:none;border:1px solid var(--line);color:var(--text);background:var(--raised)}
+.btn.primary{background:var(--accent);color:#1a1408;border-color:var(--accent)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn:hover{border-color:var(--muted)}
+.cta{display:flex;gap:13px;flex-wrap:wrap;margin:30px 0 16px}
+.note{font-size:14px;color:var(--muted)}
+.shot{margin:44px 0 0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--panel)}
+.shot img{display:block;width:100%;height:auto}
+section{padding:62px 0;border-bottom:1px solid var(--line)}
+.grid{display:grid;gap:18px;margin-top:26px}
+@media(min-width:720px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.card p{margin:0;font-size:14.5px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:26px}
+@media(min-width:720px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat{background:var(--panel);padding:20px}
+.stat b{display:block;font-size:27px;font-weight:560;color:var(--accent);letter-spacing:-.02em}
+.stat span{font-size:13.5px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;margin-top:22px;font-size:14.5px}
+th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.05em}
+td:first-child{font-weight:550;white-space:nowrap}
+.scroller{overflow-x:auto}
+details{border:1px solid var(--line);border-radius:var(--radius);padding:15px 18px;margin-bottom:11px;background:var(--panel)}
+summary{cursor:pointer;font-weight:550}
+details p{margin:12px 0 0;color:var(--muted);font-size:14.5px}
+footer{padding:44px 0 60px;color:var(--muted);font-size:14px}
+footer a{color:var(--muted)}
+.caveat{border-left:2px solid var(--accent);padding:2px 0 2px 18px;color:var(--muted);font-size:14.5px;max-width:74ch}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:14px;top:12px;position:fixed;background:var(--accent);color:#1a1408;padding:10px 16px;border-radius:7px;z-index:99}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+ <div class="wrap bar">
+  <a class="mark" href="/">
+   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8bd71" stroke-width="1.6" aria-hidden="true"><path d="M12 2 4 7v10l8 5 8-5V7z"/><path d="M12 8v8M8.5 10.5h7"/></svg>
+   Sovereign
+  </a>
+  <nav class="top">
+   <a href="#features">Features</a>
+   <a href="#model">The model</a>
+   <a href="#modes">Difficulty</a>
+   <a href="#faq">FAQ</a>
+   <a href="/play/">Play</a>
+  </nav>
+ </div>
+</header>
+
+<main id="main">
+
+<div class="hero">
+ <div class="wrap">
+  <h1>Run a country.<br>Watch the economy answer.</h1>
+  <p class="lede" style="margin-top:20px">Sovereign is a free geopolitical strategy game that runs entirely in your browser. Take any of 204 countries, set its taxes, welfare, industrial and monetary policy, and watch a month-by-month simulation respond — through growth, inflation, unemployment, elections and the patience of the public.</p>
+  <div class="cta">
+   <a class="btn primary" href="/play/">Play Sovereign — free, no sign-up</a>
+   <a class="btn" href="#model">How the simulation works</a>
+  </div>
+  <p class="note">Runs in any modern browser · No account, no install, no tracking · Works offline once loaded · Saves stay on your device</p>
+  <div class="shot">
+   <img src="/hero.png" width="1280" height="760" alt="The Sovereign interface: a navigation rail, a strip showing GDP, population, public approval and political capital, a world map with Brazil selected, and a panel of national outlook figures." loading="eager" decoding="async" fetchpriority="high">
+  </div>
+ </div>
+</div>
+
+<section id="features">
+ <div class="wrap">
+  <h2>What you actually control</h2>
+  <p class="lede">Sovereign is a sandbox, not a campaign. There is no victory screen — you decide whether you are chasing prosperity, equality, liberty, influence, or a balance of your own.</p>
+  <div class="stats">
+   <div class="stat"><b>204</b><span>Playable countries</span></div>
+   <div class="stat"><b>1,198</b><span>Named cities &amp; settlements</span></div>
+   <div class="stat"><b>63</b><span>Policy controls</span></div>
+   <div class="stat"><b>$0</b><span>Price, forever</span></div>
+  </div>
+  <div class="grid three">
+   <div class="card"><h3>Fiscal policy</h3><p>Income-tax brackets or a flat rate, corporate and land taxes, health and education, social protection, infrastructure, defence, housing, childcare and pensions — each with a visible budget cost and a lag before it bites.</p></div>
+   <div class="card"><h3>The central bank</h3><p>Set an inflation target and decide how independent the bank is. It runs its own reaction function; the more independence you grant, the less you control the rate and the faster expectations anchor.</p></div>
+   <div class="card"><h3>Cities</h3><p>Every country has real named cities. Fund local policing, prevention, services and maintenance, watch a crime-pressure index respond, and queue hospitals, metros, universities and freight terminals.</p></div>
+   <div class="card"><h3>Trade</h3><p>Sign five-year commodity contracts in food, energy, manufactures and technology. Deliveries are capped by real production capacity, tariffs become customs revenue, and sanctions or war suspend the route.</p></div>
+   <div class="card"><h3>Politics</h3><p>Eight parties, a hundred seats, coalitions and elections. Reforms cost political capital, unpopular ones cost approval, and a governing coalition has to be held together.</p></div>
+   <div class="card"><h3>Diplomacy &amp; defence</h3><p>Embassies, research and climate pacts, non-aggression and defence treaties, sanctions. Split a defence budget across army, navy and air forces, and choose a doctrine.</p></div>
+  </div>
+ </div>
+</section>
+
+<section id="model">
+ <div class="wrap">
+  <h2>The simulation is a real model, not a slider that goes up</h2>
+  <p class="lede">Output is produced, not granted. Every month the game solves a small macroeconomic model for all 204 countries.</p>
+
+  <div class="grid">
+   <div class="card">
+    <h3>Supply — what the country can produce</h3>
+    <p>A Cobb-Douglas production function, <b>Y = A · K<sup>0.33</sup> · L<sup>0.67</sup></b>. Investment builds a capital stock net of depreciation. Productivity grows with research, competition, openness and administrative quality — and catches up toward the frontier only where institutions, schooling and trade support it, so weak states converge slowly or not at all.</p>
+   </div>
+   <div class="card">
+    <h3>Demand — what it actually produces</h3>
+    <p>An output gap driven by real interest rates against a modelled neutral rate, the fiscal impulse, competitiveness, trade and shocks. Demand moves output around the supply path. It cannot raise it for long — stimulus buys a boom and pays for it in inflation.</p>
+   </div>
+   <div class="card">
+    <h3>Money — the price level</h3>
+    <p>A Taylor-type policy rule, a modelled neutral rate, a central-bank balance sheet and a credibility score. Inflation follows an expectations-augmented Phillips curve. A credible bank disinflates cheaply; a bank that keeps missing its target does not.</p>
+   </div>
+   <div class="card">
+    <h3>People — the labour market</h3>
+    <p>Unemployment follows Okun's law around a structural floor set by labour rules, minimum wages, training and placement programmes. Participation responds to the pension age and childcare. Population changes through modelled fertility, ageing and migration.</p>
+   </div>
+  </div>
+
+  <p class="caveat" style="margin-top:30px"><b>An honest note on realism.</b> These are recognisable textbook relationships, simplified to one line each and tuned for playability. Nothing here is estimated from data or calibrated to any real country, and no number the game shows — a growth rate, a crime index, a city budget — is a statistic about a real place. It is a game that argues with you in the language of economics, not a forecasting model.</p>
+ </div>
+</section>
+
+<section id="modes">
+ <div class="wrap">
+  <h2>Three difficulty modes, and nothing hidden</h2>
+  <p class="lede">A mode is a bundle of sandbox rules you can see and edit. Switching modes never restarts your world or rewrites your policies.</p>
+  <div class="scroller">
+  <table>
+   <thead><tr><th>Rule</th><th>Easy</th><th>Medium</th><th>Hard</th></tr></thead>
+   <tbody>
+    <tr><td>National debt</td><td>Switched off entirely</td><td>Forgiving carrying costs</td><td>Standard carrying costs</td></tr>
+    <tr><td>Supply shocks</td><td>None</td><td>Every 5 months</td><td>Every 3 months, 50% harsher</td></tr>
+    <tr><td>Political capital</td><td>Rebuilds 50% faster</td><td>Normal</td><td>30% slower</td></tr>
+    <tr><td>Reform cost</td><td>30% cheaper</td><td>Normal</td><td>35% dearer</td></tr>
+    <tr><td>Rival nations</td><td>Cooperative</td><td>Normal</td><td>They sanction each other, and you</td></tr>
+   </tbody>
+  </table>
+  </div>
+  <p style="margin-top:22px" class="note">Easy removes sovereign borrowing completely: deficits are simply not financed by debt, so there is no interest, no debt ratio and no restructuring. Everything else still constrains you — taxes, programme costs, construction time, political capital and inflation.</p>
+ </div>
+</section>
+
+<section id="faq">
+ <div class="wrap">
+  <h2>Questions</h2>
+  <details open><summary>Is it really free?</summary><p>Yes. No price, no account, no advertising, no analytics and no tracking. Sovereign is one HTML file served as a static page.</p></details>
+  <details><summary>Does it work offline?</summary><p>Yes. Once the page has loaded, the entire simulation runs on your own machine. Nothing is sent anywhere. You can save the page to disk and open it later with no connection at all.</p></details>
+  <details><summary>Where do my saved games go?</summary><p>Into your own browser's storage, on your device. Browser storage is tied to the page address, so use <b>Export save file</b> in Sandbox if you want a portable backup or plan to play from a different location.</p></details>
+  <details><summary>Does it run on a phone?</summary><p>It does, and the layout adapts, but the interface has a lot of panels and is considerably more comfortable on a tablet or a laptop.</p></details>
+  <details><summary>Are the country statistics real?</summary><p>Starting conditions are rough, hand-set scenario values in the right order of magnitude, not current official statistics. City names are real places; the crime, budget and development figures attached to them are invented gameplay indices. The map's borders are a scenario simplification and are not a statement about sovereignty or recognition.</p></details>
+  <details><summary>Can I play a country that isn't on the list?</summary><p>Every UN member state, both observer states and nine further scenario entities are playable — 204 in total. Select any of them on the map and choose <b>Play as</b>.</p></details>
+ </div>
+</section>
+
+</main>
+
+<footer>
+ <div class="wrap">
+  <p><a class="btn primary" href="/play/">Play Sovereign</a></p>
+  <p style="margin-top:26px">Sovereign is an independent hobby project. Map outlines from <a href="https://www.naturalearthdata.com/" rel="noopener">Natural Earth</a> (public domain); place names spot-checked with <a href="https://www.geonames.org/" rel="noopener">GeoNames</a> (CC BY 4.0), curated and simplified for gameplay.</p>
+  <p>Not affiliated with any government, institution or organisation. Nothing in the game is political advice, economic advice, or a description of real events.</p>
+ </div>
+</footer>
+
+</body>
+</html>
