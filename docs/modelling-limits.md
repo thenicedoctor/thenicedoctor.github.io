@@ -41,9 +41,26 @@ government.
 
 Choosing 1970, 1985 or 2000 rescales world output and population and shifts policy settings by
 fixed multipliers. World population lands close to the historical figure because that was the
-easiest quantity to anchor; nothing else should be read as historical. The country list is the
-present-day set of 204 entities in every era, which is plainly wrong for 1970 and is a deliberate
-simplification — the alternative was maintaining four historical world maps.
+easiest quantity to anchor; nothing else should be read as historical.
+
+Since v8 the **country list follows the era**: the Soviet Union, Yugoslavia and Czechoslovakia
+appear as single states in 1970 and 1985, Serbia and Montenegro in 2000, states that had not yet
+become independent are absent, and countries and cities carry the names they held at the time.
+
+This is still a scenario, not a historical atlas, and three limits matter:
+
+- **Territory is approximated** by grouping present-day polygons. The internal borders of the
+  period are not drawn, and where a modern border differs from the historical one, the modern one
+  is shown.
+- **Partitioned states are left unified.** The two Germanys, the two Vietnams and the two Yemens
+  appear as one country each, labelled to say so, because the polygon data cannot be split.
+- **Figures for merged states are scenario assumptions.** The recognisable blocs carry hand-set
+  population and output roughly matching the historical order of magnitude; everything else is the
+  uniform era scaling applied to present-day values, which under-counts economies that grew more
+  slowly than the world average.
+
+Including a state, drawing a border or choosing a name is not a comment on its legitimacy, its
+recognition, or any territorial dispute, historical or current.
 
 ## Cities
 

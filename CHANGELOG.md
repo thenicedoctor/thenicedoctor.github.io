@@ -4,6 +4,32 @@ Versions are the save-format version (`S.version`). Each is produced by its own 
 the previous version's output, and each bumps `newGame`, `validSave` and `migrateSave` together so
 older saves keep loading.
 
+## v8 — Historical states
+
+- **The map follows the era.** Starting in 1970 or 1985 puts the **Soviet Union** (15 republics as
+  one state), **Yugoslavia** (7) and **Czechoslovakia** (2) on the map, holding their members'
+  territory as a single contiguous country; 2000 has **Serbia and Montenegro**.
+- **States that were not yet independent are absent** — 37 of them in 1970, including Bangladesh,
+  the UAE, Qatar, Zimbabwe, Angola and Mozambique. They appear in the era in which they exist.
+- **Period place names**, for countries and cities: Ceylon, Burma, Upper Volta, Dahomey, Zaire;
+  Leningrad, Sverdlovsk, Alma-Ata, Tselinograd, Frunze, Bombay, Madras, Peking, Saigon, Rangoon,
+  Salisbury.
+- Merged states sum their members' population, output, debt and forces, take the output-weighted
+  average of their policy indicators, and draw their cities from across the union by size. The
+  most recognisable blocs carry explicit scenario figures, because uniform era scaling badly
+  under-counts economies that grew more slowly than the world.
+- The Overview panel explains what a historical state is and which present-day countries it covers.
+
+**Fixes.** Save validation pinned every nation's name to the live scenario and every city name to a
+literal string, so any era rename was rejected. Both now validate against what the era tables can
+actually produce, which keeps the anti-spoofing protection while allowing legitimate period names.
+The nation list is also no longer required to be a fixed length, since an era legitimately has
+fewer states.
+
+**Limits.** Territory is approximated by grouping present-day polygons, so the internal borders of
+the period are not drawn, and partitioned states — the two Germanys, the two Vietnams, the two
+Yemens — are left unified and labelled as such, because the map data cannot be split.
+
 ## v7 — Eras, dispatches and mobile
 
 - **Start eras.** Begin in 1970, 1985, 2000 or 2026. An era rescales world output and population,
