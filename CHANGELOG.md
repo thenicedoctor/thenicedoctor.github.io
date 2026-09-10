@@ -4,6 +4,20 @@ Versions are the save-format version (`S.version`). Each is produced by its own 
 the previous version's output, and each bumps `newGame`, `validSave` and `migrateSave` together so
 older saves keep loading.
 
+## v11 — War on the border
+
+- Declaring war on a neighbour opens a **front along the land border the two countries actually
+  share**, computed from the map polygons: China and Russia have 14 neighbours each, Germany 9,
+  Brazil 10 — all matching reality.
+- The front moves each month with the fighting, drawn on the map as a dashed line that shifts.
+  Combat weighs the army committed, readiness, training, logistics and doctrine.
+- **Supply falls the further you push past your own border**, so an offensive culminates on its
+  own. Both armies take losses; the outmatched side takes more.
+- A war against a country you do not border is a limited war — attrition, no front, no ground.
+- A war room in Military: front position, supply, losses, and a slider for how much of the army to
+  commit. A ceasefire is refused while you are clearly winning.
+- Borders never move. No territory is annexed and no country is conquered.
+
 ## v10 — Repeatable debt relief
 
 - Relief operations no longer make you wait between them. Renegotiating maturities, concessional
