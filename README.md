@@ -7,7 +7,7 @@
 [**▶ Play**](https://thenicedoctor.github.io/) · [Economic model](docs/economic-model.md) · [Architecture](docs/architecture.md) · [Modelling limits](docs/modelling-limits.md) · [Changelog](CHANGELOG.md)
 
 ![license](https://img.shields.io/badge/license-MIT-blue)
-![engine suites](https://img.shields.io/badge/engine%20suites-11%20passing-brightgreen)
+![engine suites](https://img.shields.io/badge/engine%20suites-12%20passing-brightgreen)
 ![dependencies](https://img.shields.io/badge/runtime%20dependencies-0-brightgreen)
 
 <img src="hero.png" alt="The Sovereign interface: navigation rail, national statistics, world map and policy panel." width="820">
@@ -79,11 +79,11 @@ area.
 
 ```
 src/base/      sovereign-v3.html      the artifact the build chain starts from
-src/addons/    v4…v12-addon.js         each version's new behaviour, layered by wrapping functions
-src/build/     build-v4…v12.py         exact-string patch scripts, one per version
+src/addons/    v4…v13-addon.js         each version's new behaviour, layered by wrapping functions
+src/build/     build-v4…v13.py         exact-string patch scripts, one per version
 src/data/      map polygons, city catalogue, provenance notes
-tests/         check-game…check-v12.cjs   engine invariants, run in a vm sandbox
-dist/          sovereign-v12.html      the built game
+tests/         check-game…check-v13.cjs   engine invariants, run in a vm sandbox
+dist/          sovereign-v13.html      the built game
 docs/          architecture, economic model, modelling limits, CI workflows
 index.html     the published landing page  (a user Pages site, served from the root)
 play/          the published game
@@ -104,7 +104,8 @@ python3 src/build/build-v8.py    # historical states per era
 python3 src/build/build-v9.py    # divided countries
 python3 src/build/build-v10.py   # repeatable debt relief
 python3 src/build/build-v11.py   # wars fought on the real border
-python3 src/build/build-v12.py   # history as you play, rival wars, objectives  -> dist/
+python3 src/build/build-v12.py   # history as you play, rival wars, objectives
+python3 src/build/build-v13.py   # contested cities, war crash fix  -> dist/
 python3 src/build/build-site.py  # assembles the published site at the repository root
 ```
 
@@ -120,11 +121,11 @@ state coexists with its predecessor, save migration from every earlier version, 
 stability run in each difficulty mode and era.
 
 ```bash
-node tests/check-v12.cjs
+node tests/check-v13.cjs
 for f in tests/check-*.cjs; do node "$f" || exit 1; done
 ```
 
-All eleven suites pass. Ready-to-use GitHub Actions workflows are in
+All twelve suites pass. Ready-to-use GitHub Actions workflows are in
 [`docs/ci/`](docs/ci/) — see [docs/ci/README.md](docs/ci/README.md) to enable them.
 
 ## Contributing

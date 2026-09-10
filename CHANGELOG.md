@@ -4,6 +4,24 @@ Versions are the save-format version (`S.version`). Each is produced by its own 
 the previous version's output, and each bumps `newGame`, `validSave` and `migrateSave` together so
 older saves keep loading.
 
+## v13 — Cities change hands, and war works again
+
+**Fixed: every war was unusable.** The base `declareWar` created a bare war record and then called
+`render()` — before the V11 layer could add the front fields. Drawing the war room read
+`supply.toFixed()` on `undefined` and threw; the throw escaped through the modal's click listener,
+so the front was never opened. The result was a permanently half-built war showing NaN in every
+field for the rest of the game. Declaring war through the interface hit this every time; only a
+direct function call, which is what the tests did, avoided it.
+
+Three defences now: war records are created complete at the point of declaration, the war room
+tolerates and repairs a record that is not, and an affected save is repaired on load.
+
+- **Cities can be taken back.** Push the front to a city's depth and it falls; let the front fall
+  back behind it and its owner recovers it, with a margin either way so a city on the line does not
+  change hands every month. A city that has changed hands twice carries the damage.
+- The objective list now shows each city as **held**, **contested**, or how far in it still sits.
+- Save validation rejects a city held by both sides at once.
+
 ## v12 — A world that moves
 
 - **History happens as you play.** From an earlier era the map changes on schedule: the Gulf states
