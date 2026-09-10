@@ -4,6 +4,34 @@ Versions are the save-format version (`S.version`). Each is produced by its own 
 the previous version's output, and each bumps `newGame`, `validSave` and `migrateSave` together so
 older saves keep loading.
 
+## v12 — A world that moves
+
+- **History happens as you play.** From an earlier era the map changes on schedule: the Gulf states
+  and Bangladesh in 1971, the Portuguese colonies in 1975, Vietnam reunified in 1976, Zimbabwe in
+  1980, Germany and Yemen in 1990, the Soviet Union in December 1991, Yugoslavia in 1992,
+  Czechoslovakia in 1993, on to South Sudan in 2011. A dissolving state hands its output, people
+  and forces to its successors; a unification pools them. Twenty-six events, switchable off.
+- **Rival nations fight their own wars**, on the same front model, against neighbours they dislike
+  and clearly outmatch — and never against one holding a non-aggression or defence agreement.
+- **Offensives can be aimed at a named city.** Every enemy city has a depth: how far past the border
+  the front must reach before it falls, deeper for the largest and best held. Buenos Aires sits 41%
+  in, Salta 90%. Taking one costs the defender the output and confidence that went with it.
+- **Debt can be frozen** rather than removed: the stock you carry stays, stops growing, and is
+  charged no interest.
+- **Unlimited city construction queues**, optional.
+- **Ideology presets are fitted to the budget**, trimming discretionary spending until the deficit
+  is within about 4% of output while leaving taxes, institutions and civil liberties alone.
+- **Seven more programmes**: stabilisation, industrial strategy, a universal welfare state, the
+  energy transition, an open economy, public safety and justice, and defence posture.
+
+**Fixed.** The city development picker closed every month while time was running: `renderTick()`
+rebuilds the panel, and any `<details>` the player had opened snapped shut. Open sections now
+survive the re-render. Relations between neighbours could never fall below about −4, so rivals
+could never find a reason to fight; friction now grows between neighbours who differ sharply in how
+they are governed or where one dwarfs the other. Several countries are seeded from the map data
+rather than the SEEDS table and were invisible to the new state transitions. Kosovo was listed as a
+member of Yugoslavia but is not in the map data, which left orphaned territory.
+
 ## v11 — War on the border
 
 - Declaring war on a neighbour opens a **front along the land border the two countries actually

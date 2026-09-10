@@ -18,7 +18,7 @@ const HISTORY={
   // Not yet independent in January 1970.
   absent:['BGD','ARE','QAT','BHR','ZWE','NAM','ERI','SSD','TLS','BRN','AGO','MOZ','GNB','CPV','STP',
    'COM','DJI','PNG','SLB','VUT','KIR','TUV','FSM','MHL','PLW','ATG','DMA','VCT','KNA','LCA','BLZ',
-   'BHS','GRD','SUR','SYC','PSE','SOL'],
+   'BHS','GRD','SUR','SYC'],
   rename:{LKA:'Ceylon',MMR:'Burma',BFA:'Upper Volta',BEN:'Dahomey',CIV:'Ivory Coast',SWZ:'Swaziland',
    TUR:'Turkey',COG:'Congo-Brazzaville',COD:'Democratic Republic of the Congo',DEU:'Germany · FRG and GDR',
    VNM:'Vietnam · North and South',YEM:'Yemen · North and South',KHM:'Cambodia',THA:'Thailand'}},
@@ -30,7 +30,7 @@ const HISTORY={
     members:['SRB','HRV','BIH','SVN','MKD','MNE','XKX']},
    CSK:{pop:15.5,gdp:210,name:'Czechoslovakia',short:'Czechoslovakia',lon:17,lat:49.5,preset:'State capitalist',
     members:['CZE','SVK']}},
-  absent:['NAM','ERI','SSD','TLS','PLW','FSM','MHL','PSE'],
+  absent:['NAM','ERI','SSD','TLS','PLW','FSM','MHL'],
   rename:{MMR:'Burma',COD:'Zaire',SWZ:'Swaziland',CIV:'Ivory Coast',TUR:'Turkey',CPV:'Cape Verde',
    DEU:'Germany · FRG and GDR',YEM:'Yemen · North and South'}},
  e2000:{
@@ -49,7 +49,7 @@ function buildTerritory(){
  S.territory={};
  const live=new Set(S.nations.map(n=>n.id));
  for(const[id,info]of Object.entries(S.historical||{}))
-  for(const m of info.members)S.territory[m]=id;
+  for(const m of info.members)if(GEO.some(g=>g.id===m))S.territory[m]=id;
  // A polygon whose country is absent this era belongs to nobody and renders as open land.
  for(const g of GEO)if(!S.territory[g.id]&&!live.has(g.id))S.territory[g.id]='';
 }
@@ -71,7 +71,9 @@ function applyHistoryV8(eraKey){
  S.historical={};
  // 1. Merge. The successor states are removed and replaced by the state of the period.
  for(const[id,spec]of Object.entries(h.merge)){
-  const parts=spec.members.map(m=>nation(m)).filter(Boolean);
+  // Only members that are actually on this map; the catalogue lists a few that are not.
+  const members=spec.members.filter(m=>GEO.some(g=>g.id===m));
+  const parts=members.map(m=>nation(m)).filter(Boolean);
   if(!parts.length)continue;
   const lead=parts.reduce((a,b)=>b.gdp>a.gdp?b:a);
   const pop=parts.reduce((a,n)=>a+n.pop,0),gdp=parts.reduce((a,n)=>a+n.gdp,0),debt=parts.reduce((a,n)=>a+n.debt,0);
@@ -92,10 +94,10 @@ function applyHistoryV8(eraKey){
   merged.forces={army:merged.military*.5,navy:merged.military*.25,air:merged.military*.25};
   merged.fxRegime=lead.fxRegime;
   econSeed(merged);merged.mon.rate=merged.policies.rate;merged.mon.expected=merged.inflation;
-  const drop=new Set(spec.members);
+  const drop=new Set(members);
   S.nations=S.nations.filter(n=>!drop.has(n.id));
   S.nations.push(merged);
-  S.historical[id]={members:spec.members,name:spec.name,short:spec.short};
+  S.historical[id]={members,name:spec.name,short:spec.short};
  }
  // 2. Remove states that were not yet independent.
  const gone=new Set(h.absent);
