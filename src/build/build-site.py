@@ -9,7 +9,9 @@ import re, datetime, hashlib
 ROOT = Path(__file__).resolve().parents[2]
 SITE = ROOT          # a user Pages site is served from the repository root
 ORIGIN = 'https://thenicedoctor.github.io'
-TODAY = datetime.date(2026, 9, 9).isoformat()
+# The sitemap's lastmod must reflect when the site actually changed. A pinned date
+# republishes "nothing new since" on every deploy, which suppresses recrawling.
+TODAY = datetime.date.today().isoformat()
 
 (SITE / 'play').mkdir(parents=True, exist_ok=True)
 
@@ -65,7 +67,7 @@ Allow: /
 Sitemap: {ORIGIN}/sitemap.xml
 ''')
 
-pages = [('/', '1.0', 'monthly'), ('/play/', '0.9', 'monthly')]
+pages = [('/', '1.0', 'weekly'), ('/play/', '0.9', 'weekly')]
 (SITE / 'sitemap.xml').write_text(
  '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
  + ''.join(f'<url><loc>{ORIGIN}{p}</loc><lastmod>{TODAY}</lastmod>'
