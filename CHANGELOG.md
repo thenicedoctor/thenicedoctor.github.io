@@ -4,6 +4,22 @@ Versions are the save-format version (`S.version`). Each is produced by its own 
 the previous version's output, and each bumps `newGame`, `validSave` and `migrateSave` together so
 older saves keep loading.
 
+## v14 — Federal agencies, and choosing who you are
+
+- **The game now opens on a country screen.** All 204 countries, searchable and sorted by size,
+  each showing its output, population and whether it runs federal agencies. The difficulty and
+  sandbox rules follow on a second screen, which keeps a link back if you change your mind.
+- **Federal agencies for the larger economies.** Twenty-two countries run standing institutions
+  funded outside ordinary programme spending, across six kinds: research, disease control, law
+  enforcement, civil protection, environmental protection and intelligence. Each does one thing —
+  research raises productivity, law enforcement lowers crime, civil protection softens supply
+  shocks — and each is capped at 0.25% of GDP, so the whole apparatus is at most about 1.5%.
+  Countries without agencies are not penalised; they simply spend through ordinary programmes.
+  The names are real for flavour, and every budget and effect is invented for the simulation.
+- The agency research bonus is applied to total factor productivity **before** potential output is
+  computed, so `Y* = A·K^0.33·L^0.67` still holds exactly.
+- Fixed a 3px horizontal overflow on narrow screens, left over from V7's larger time controls.
+
 ## v13 — Cities change hands, and war works again
 
 **Fixed: every war was unusable.** The base `declareWar` created a bare war record and then called
@@ -21,6 +37,13 @@ tolerates and repairs a record that is not, and an affected save is repaired on 
   change hands every month. A city that has changed hands twice carries the damage.
 - The objective list now shows each city as **held**, **contested**, or how far in it still sits.
 - Save validation rejects a city held by both sides at once.
+- **A beaten country can be annexed.** Break an enemy army decisively and you choose: impose
+  terms, or take the country. Its territory, cities, people and output transfer to you and the
+  map redraws. It costs political capital, 30 reputation, relations with every other country,
+  and leaves an occupied population that raises crime and depresses stability for years.
+  Annexed cities are appended to the catalogue and rebuilt from the save on load, so a
+  conquest survives a reload. Rival nations never annex each other, so the map does not
+  consolidate on its own.
 
 ## v12 — A world that moves
 

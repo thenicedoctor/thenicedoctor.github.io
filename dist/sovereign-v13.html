@@ -375,7 +375,7 @@ function updateReformPreview(){refreshProgramLive();if(!$('reformPreview')||!dra
 function economyPanel(n){const b=fiscal(n);return '<div class="block"><h3>National accounts</h3><div class="previewgrid"><div class="minicard"><label>Annual output</label><strong>'+money(n.gdp)+'</strong></div><div class="minicard"><label>Output per person</label><strong>$'+Math.round(n.gdp/n.pop*1000).toLocaleString()+'</strong></div></div>'+metric('Annual real growth',pct(n.growth),n.growth>=0?'positive':'negative')+metric('Inflation',n.inflation.toFixed(1)+'%')+metric('Central-bank rate',n.policies.rate.toFixed(1)+'%')+sparkline(n.history)+'</div><div class="block"><h3>Annual public budget · % of GDP</h3>'+metric('Personal income tax',b.personalRevenue.toFixed(1)+'%')+metric('Other taxes & contributions',b.otherRevenue.toFixed(1)+'%')+metric('Public-asset revenue',b.assetRevenue.toFixed(1)+'%')+metric('Total revenue',b.revenue.toFixed(1)+'%')+metric('Public services',n.policies.services.toFixed(1)+'%')+metric('Social protection',n.policies.welfare.toFixed(1)+'%')+metric('Infrastructure',n.policies.investment.toFixed(1)+'%')+metric('Defense',n.policies.defense.toFixed(1)+'%')+metric('Public housing construction',n.policies.housing.toFixed(2)+'%')+metric('Public housing upkeep',b.housingMaintenance.toFixed(2)+'%')+metric('Rent assistance',n.policies.rentAid.toFixed(2)+'%')+metric('Public transport',n.policies.transit.toFixed(2)+'%')+metric('Childcare',n.policies.childcare.toFixed(2)+'%')+metric('City building',n.policies.urbanization.toFixed(2)+'%')+metric('Industrial drive',n.policies.industrial.toFixed(2)+'%')+metric('Settlement upgrading',n.policies.slumUpgrade.toFixed(2)+'%')+metric('Rural development',n.policies.ruralInvest.toFixed(2)+'%')+metric('Debt management',b.debtAdmin.toFixed(2)+'%')+metric('Transition & administration',(5+n.policies.climate*.02).toFixed(1)+'%')+metric('Interest payments',b.debtService.toFixed(1)+'%')+metric(b.balance>=0?'Fiscal surplus':'Fiscal deficit',pct(b.balance),b.balance>=0?'positive':'negative')+metric('Debt stock',money(n.debt))+'</div><div class="block"><h3>Housing program</h3>'+metric('Public housing stock',n.publicHousing.toFixed(1)+'% of need')+metric('Under construction',n.housingPipeline.reduce((a,v)=>a+v,0).toFixed(2)+'% of need')+metric('Completed this month',n.housingCompleted.toFixed(3)+' percentage points')+metric('Effective renter burden',n.rentBurden.toFixed(1)+'% of income')+'<p>Projects take 24 months. Built homes remain after construction funding is cut, with ongoing upkeep and gradual deterioration.</p></div><div class="block"><h3>Urbanization</h3>'+metric('Urban population',n.urban.toFixed(1)+'%')+metric('Living informally',n.slums.toFixed(1)+'%')+metric('Serviced city capacity',n.urbanCapacity.toFixed(0)+' / 100')+metric('Migration to cities',((n.migration||0)*12).toFixed(2)+' pp / year')+metric('Agglomeration effect on growth',pct(n.agglomeration))+'</div><div class="block"><h3>Debt position</h3>'+metric('Debt to output',b.debtRatio.toFixed(0)+'% of GDP')+metric('Interest rate carried',b.interest.toFixed(2)+'%')+metric('Annual interest bill',b.debtService.toFixed(2)+'% of GDP')+metric('Debt-management posture',n.policies.borrowing.toFixed(0)+' / 100')+'<p>Interest rises only above 110% of output. Relief operations are in Policies → Programs → Debt relief.</p></div><p class="note">Output and debt use constant 2026 US dollars. Initial values are rounded scenario assumptions. Debt accumulates monthly; interest costs respond to rates and debt pressure.</p><button class="full" data-action="policies">Adjust fiscal policy →</button>';}
 function diplomacyPanel(n){const p=player(),self=n.id===p.id;const choices=S.nations.filter(x=>x.id!==p.id).sort((a,b)=>b.gdp-a.gdp);return '<h3>Foreign relations</h3><p>'+(self?'Select another nation to negotiate, trade, or apply sanctions.':'Relations with '+p.name+' are '+(relation(p.id,n.id)>20?'cooperative':relation(p.id,n.id)>-20?'pragmatic':'strained')+'.')+'</p>'+(self?'<label class="eyebrow" for="partner">Diplomatic partner</label><select id="partner" class="full">'+choices.map(c=>'<option value="'+c.id+'">'+c.name+'</option>').join('')+'</select><button class="primary full" id="inspectPartner">Open diplomatic channel →</button>':'<div class="block">'+metric('Bilateral relations',Math.round(relation(p.id,n.id))+' / 100')+'<div class="bar"><div style="width:'+(relation(p.id,n.id)+100)/2+'%"></div></div>'+metric('Trade agreement',hasTreaty(p.id,n.id)?'Active':'None')+metric('Sanctions',S.sanctions.includes(pair(p.id,n.id))?'Active':'None')+'</div><button class="full" data-diplomacy="improve" '+(!canSpend(p,8)?'disabled':'')+'>Improve relations · 8 capital</button><button class="full" data-diplomacy="trade" '+(hasTreaty(p.id,n.id)||!canSpend(p,15)||p.war?.target===n.id?'disabled':'')+'>Propose trade agreement · 15 capital</button><p>Agreements require relations above 25 and openness above 40 in both nations.</p><button class="full" data-diplomacy="sanction">'+(S.sanctions.includes(pair(p.id,n.id))?'Lift sanctions':'Impose sanctions · 10 capital')+'</button><p>Sanctions reduce output in both nations and damage bilateral relations.</p>')+'<div class="block" style="margin-top:24px"><h3>Your active agreements</h3>'+(S.treaties.filter(t=>t.split(':').includes(p.id)).map(t=>metric(nation(t.split(':').find(id=>id!==p.id)).name,'Trade pact')).join('')||'<p>No trade agreements yet.</p>')+'</div><p class="note">Diplomacy starts from neutral game assumptions. Real alliances and ongoing conflicts are not recreated.</p>';}
 function diplomacy(action){const p=player(),n=current();if(p.id===n.id)return;const key=pair(p.id,n.id);if(p.war?.target===n.id&&action!=='sanction'){toast('Negotiate peace before opening diplomatic channels.');return}if(action==='improve'){if(!canSpend(p,8))return;spendCapital(p,8);setRelation(p.id,n.id,relation(p.id,n.id)+14);toast('Diplomatic outreach improved relations by 14.')}if(action==='trade'){if(!canSpend(p,15)||hasTreaty(p.id,n.id))return;if(relation(p.id,n.id)<25||Math.min(p.policies.trade,n.policies.trade)<40){toast('Agreement declined: improve relations and trade openness.');return}spendCapital(p,15);S.treaties.push(key);addEvent('Trade agreement signed',p.name+' and '+n.name+' open new markets. Output benefits build over time.','diplomacy');toast('Trade agreement signed.')}if(action==='sanction'){if(S.sanctions.includes(key)){S.sanctions=S.sanctions.filter(t=>t!==key);setRelation(p.id,n.id,relation(p.id,n.id)+10);toast('Sanctions lifted.')}else{if(!canSpend(p,10)){toast('You need 10 political capital.');return}spendCapital(p,10);S.sanctions.push(key);S.treaties=S.treaties.filter(t=>t!==key);setRelation(p.id,n.id,relation(p.id,n.id)-30);addEvent('Sanctions imposed',p.name+' restricts commerce with '+n.name+'. Both economies face disruption.','diplomacy');toast('Sanctions imposed.')}}render();requestDraw();}
-function militaryPanel(n){const p=player();return '<div class="block"><h3>Defense & readiness</h3>'+metric('Annual defense budget',money(n.gdp*n.policies.defense/100))+metric('Defense share',n.policies.defense.toFixed(1)+'% of GDP')+metric('Equipment & logistics index',n.military.toFixed(0))+metric('Operational readiness',n.readiness.toFixed(0)+'%')+'<div class="bar"><div style="width:'+n.readiness+'%;background:var(--blue)"></div></div><p>Spending accumulates into military capability over years. Institutions improve delivery. War damages output, equipment and public support.</p></div>'+(n.war?'<div class="ideologybox"><div class="eyebrow">Active conflict</div><strong>'+nation(n.war.target).name+'</strong>'+metric('Duration',n.war.months+' months')+metric('Strategic balance',n.war.progress.toFixed(0))+'</div>'+(n.id===p.id||p.war?.target===n.id?'<button class="full" data-action="peace">Negotiate ceasefire</button>':''):n.id!==p.id?'<button class="danger full" data-action="war" '+(p.war?'disabled':'')+'>Consider military action</button>':'<p>No active conflict. Select another nation on the map to assess military action.</p>')+'<button class="full" data-action="policies">Change defense spending →</button><p class="note">Wars with a neighbour are fought on the land border the two countries actually share, and the front moves with the fighting. Settlements create reparations; borders never move and no country is annexed. No real conflicts are active at scenario start.</p>';}
+function militaryPanel(n){const p=player();return '<div class="block"><h3>Defense & readiness</h3>'+metric('Annual defense budget',money(n.gdp*n.policies.defense/100))+metric('Defense share',n.policies.defense.toFixed(1)+'% of GDP')+metric('Equipment & logistics index',n.military.toFixed(0))+metric('Operational readiness',n.readiness.toFixed(0)+'%')+'<div class="bar"><div style="width:'+n.readiness+'%;background:var(--blue)"></div></div><p>Spending accumulates into military capability over years. Institutions improve delivery. War damages output, equipment and public support.</p></div>'+(n.war?'<div class="ideologybox"><div class="eyebrow">Active conflict</div><strong>'+nation(n.war.target).name+'</strong>'+metric('Duration',n.war.months+' months')+metric('Strategic balance',n.war.progress.toFixed(0))+'</div>'+(n.id===p.id||p.war?.target===n.id?'<button class="full" data-action="peace">Negotiate ceasefire</button>':''):n.id!==p.id?'<button class="danger full" data-action="war" '+(p.war?'disabled':'')+'>Consider military action</button>':'<p>No active conflict. Select another nation on the map to assess military action.</p>')+'<button class="full" data-action="policies">Change defense spending →</button><p class="note">Wars with a neighbour are fought on the land border the two countries actually share, and the front moves with the fighting. Beat an army decisively and you may impose terms or annex the country outright. No real conflicts are active at scenario start.</p>';}
 function declareWar(){const a=player(),b=current();if(a.id===b.id||a.war||b.war){toast('One of these nations is already in a conflict.');return}if(!canSpend(a,25)){toast('Military action requires 25 political capital.');return}spendCapital(a,25);beginWarV13(a,b);a.approval-=12;a.stability-=5;setRelation(a.id,b.id,-95);S.treaties=S.treaties.filter(t=>t!==pair(a.id,b.id));addEvent('Conflict breaks out',a.name+' and '+b.name+' enter a conventional conflict. Output and civilian confidence fall.','warning');closeModal();render();requestDraw()}
 function peace(){const a=player();if(!a.war)return;const b=nation(a.war.target);a.war=null;b.war=null;setRelation(a.id,b.id,-30);addEvent('Diplomacy ends the fighting',a.name+' and '+b.name+' agree to an immediate ceasefire. Recovery will take time.','diplomacy');toast('Ceasefire agreed.');render();requestDraw()}
 function settingsPanel(){return '<h3>Sandbox rules</h3><p>Make the world as constrained or experimental as you like.</p><label class="toggleline">Other nations adjust their policies<input type="checkbox" data-option="ai" '+(S.options.ai?'checked':'')+'></label><label class="toggleline">Economic events and supply shocks<input type="checkbox" data-option="shocks" '+(S.options.shocks?'checked':'')+'></label><label class="toggleline">Infinite political capital<input type="checkbox" data-option="infiniteCapital" '+(S.options.infiniteCapital?'checked':'')+'></label><p>Unlimited political capital for reforms, diplomacy and military actions. Economic budgets, debt, and construction time still apply.</p><label class="toggleline">Free reforms only<input type="checkbox" data-option="freeReforms" '+(S.options.freeReforms?'checked':'')+'></label><div class="block"></div><h3>Your scenario</h3><button class="full" data-action="editScenario">Edit selected nation’s starting conditions</button><p>Directly change output, debt, stability and institutional capacity at any point.</p><div class="block"></div><h3>Save & resume</h3><button class="full" data-action="save">Save to this browser</button><button class="full" data-action="load">Load browser save</button><button class="full" data-action="export">Export save file</button><button class="full" data-action="import">Import save file</button><p>Saves stay on your device. Export a file for a portable backup.</p><button class="danger full" data-action="reset">Start a new world</button>';}
@@ -2994,6 +2994,172 @@ showGuide=function(){
  +'the interface was drawn before it was filled in, so drawing it threw, the front was never opened, '
  +'and the war showed NaN in every field for the rest of the game. Records are now created complete, '
  +'the panel tolerates one that is not, and an affected save is repaired on load.</p></div>');};
+
+// ---------- conquest ----------
+// Beating a country decisively now lets you take it, not merely bill it. Annexation transfers its
+// territory, cities, people and output; it also buys you an angry world and a restive population.
+// The AI never annexes — a rival that wins imposes terms — so the map cannot quietly collapse into
+// two or three blobs while you are looking elsewhere.
+function annexableV13(){return S.conquest&&S.conquest.winner===S.player&&nation(S.conquest.loser)?S.conquest:null;}
+// Cities of an annexed country are appended to the conqueror's catalogue entry, so everything
+// downstream — the template, the panel, save validation — keeps working unchanged.
+function rebuildAnnexedCatalogV13(state){
+ const record=(state||S)?.annexed||{};
+ for(const[winner,losers]of Object.entries(record)){
+  const base=CITY_CATALOG[winner];if(!base)continue;
+  const own=base.original||base.cities;
+  const extra=[];
+  for(const id of losers){const e=CITY_CATALOG[id];if(e)extra.push(...(e.original||e.cities));}
+  const seen=new Set(),merged=[];
+  for(const name of [...own,...extra]){const k=cityKey(name);if(seen.has(k))continue;seen.add(k);merged.push(name);}
+  CITY_CATALOG[winner]={...base,original:own,cities:merged};}}
+// Rebuild the winner's city list from the enlarged catalogue, keeping what was already built.
+function recityV13(n){
+ const old=n.cities||[],used=new Set();
+ n.cities=cityTemplate(n).map(c=>{
+  const prev=old.find(x=>!used.has(x)&&cityKey(x.name)===cityKey(c.name));
+  if(prev){used.add(prev);Object.assign(c.levels,prev.levels);
+   c.queue=prev.queue.map(q=>({...q}));c.crime=prev.crime;c.satisfaction=prev.satisfaction;
+   c.management={...prev.management};}
+  return c;});}
+
+function annexV13(winnerId,loserId){
+ const w=nation(winnerId),l=nation(loserId);
+ if(!w||!l||w===l)return false;
+ // Everything the defeated state held becomes the conqueror's.
+ for(const[poly,owner]of Object.entries(S.territory))if(owner===loserId)S.territory[poly]=winnerId;
+ S.territory[loserId]=winnerId;
+ S.annexed=S.annexed||{};
+ S.annexed[winnerId]=[...(S.annexed[winnerId]||[]),loserId,...(S.annexed[loserId]||[])];
+ delete S.annexed[loserId];
+ rebuildAnnexedCatalogV13();
+ w.pop+=l.pop;w.gdp+=l.gdp;
+ if(!S.options.noDebt)w.debt+=l.debt;
+ w.forces={army:w.forces.army+l.forces.army*.25,navy:w.forces.navy+l.forces.navy*.25,air:w.forces.air+l.forces.air*.25};
+ w.military=w.forces.army+w.forces.navy+w.forces.air;
+ // Occupation is not free: an unwilling population, a wrecked economy and a hostile world.
+ w.stability=clamp(w.stability-18,3,97);
+ w.approval=clamp(w.approval-10,3,97);
+ w.reputation=clamp((w.reputation??60)-30,0,100);
+ w.unrest=(w.unrest||0)+l.pop/Math.max(.01,w.pop)*45;
+ for(const o of S.nations)if(o.id!==w.id)setRelation(w.id,o.id,relation(w.id,o.id)-22);
+ recityV13(w);
+ for(const c of w.cities)if(!(CITY_CATALOG[loserId]?.original||CITY_CATALOG[loserId]?.cities||[]).every(n2=>cityKey(n2)!==cityKey(c.name))){
+  c.crime=clamp(c.crime+24,0,100);c.satisfaction=clamp(c.satisfaction-34,0,100);}
+ // The defeated state leaves the board, and the world's bookkeeping with it.
+ S.nations=S.nations.filter(n=>n.id!==loserId);
+ const live=new Set(S.nations.map(n=>n.id));
+ for(const n of S.nations)if(n.war&&!live.has(n.war.target))n.war=null;
+ S.agreements=(S.agreements||[]).filter(p=>live.has(p.a)&&live.has(p.b));
+ S.embargoes=(S.embargoes||[]).filter(x=>live.has(x.from)&&live.has(x.to));
+ S.tradeDeals=(S.tradeDeals||[]).filter(d=>live.has(d.from)&&live.has(d.to));
+ S.relations=Object.fromEntries(Object.entries(S.relations||{}).filter(([k])=>k.split(':').every(x=>live.has(x))));
+ if(selected===loserId)selected=winnerId;
+ syncDiplomacy();rebuildNeighboursV12();initPaths();requestDraw();refreshWorld();
+ addEvent(l.name+' is annexed',
+  w.name+' takes formal control of '+l.name+'. Its territory, cities and people are now governed from '
+  +w.name+'. The world has noticed: relations have fallen everywhere and the occupied population is not reconciled.','security');
+ S.conquest=null;
+ return true;}
+
+// A decisive victory opens a choice: take the country, or take terms.
+function conquestPromptV13(){
+ const c=annexableV13();if(!c)return;
+ const l=nation(c.loser);if(!l)return;
+ modal('You have beaten '+escapeHTML(l.name),
+  '<p>'+escapeHTML(l.name)+'’s army has been broken. You can impose terms and leave it standing, or '
+  +'annex it outright and govern its territory yourself.</p>'
+  +'<p><b>Annexation</b> adds its '+l.pop.toFixed(1)+'m people, '+money(l.gdp)+' of output and '
+  +l.cities.length+' cities to your own. It also costs you 30 reputation, drops relations with every '
+  +'other country by 22, and leaves an occupied population that pushes crime up and stability down '
+  +'for years. There is no way to undo it.</p>'
+  +'<button class="danger full" id="doAnnex">Annex '+escapeHTML(l.name)+' · 40 capital</button>'
+  +'<button class="full" id="doTerms">Impose terms and leave it standing</button>');
+ $('doAnnex').onclick=()=>{
+  const n=player();
+  if(!canSpend(n,40)){toast('Annexation requires 40 political capital.');return;}
+  spendCapital(n,40);annexV13(S.player,c.loser);closeModal();render();};
+ $('doTerms').onclick=()=>{S.conquest=null;closeModal();render();toast('Terms imposed. '+l.name+' remains a country.');};}
+
+// Offered when the war ends, and still available from Military until you decide.
+const v13ResolveWarsConquest=resolveWars;
+resolveWars=function(){
+ const before=new Map(S.nations.filter(n=>n.war).map(n=>[n.id,n.war.target]));
+ v13ResolveWarsConquest();
+ for(const[id,target]of before){
+  const w=nation(id),l=nation(target);
+  if(!w||!l||w.war||l.war)continue;
+  // Decisive only: an exhausted stalemate does not hand you a country.
+  const beaten=l.forces.army<w.forces.army*.2||l.stability<18;
+  if(id===S.player&&beaten&&!S.conquest){S.conquest={winner:S.player,loser:target};}}
+ if(annexableV13()&&!playing)conquestPromptV13();};
+const v13MilitaryConquest=militaryPanel;
+militaryPanel=function(n){
+ const c=annexableV13();
+ const banner=c&&n.id===S.player
+  ?'<div class="block warroom"><h3>'+escapeHTML(nation(c.loser).name)+' is beaten</h3>'
+   +'<p>Its army is broken. Annex it and its territory, cities and people become yours — at the cost of '
+   +'your standing everywhere and an occupied population that will not settle for years.</p>'
+   +'<button class="danger full" data-action="conquest">Decide what to do with '+escapeHTML(nation(c.loser).name)+'</button></div>'
+  :'';
+ return banner+v13MilitaryConquest(n);};
+Object.assign(actions,{conquest:()=>conquestPromptV13()});
+
+// Occupied territory settles slowly, and drags on the state that holds it.
+const v13TickNationConquest=tickV4Nation;
+tickV4Nation=function(n){
+ v13TickNationConquest(n);
+ if(!n.unrest)return;
+ n.unrest=Math.max(0,n.unrest-.35-n.policies.justice*.004-n.capacity*.003);
+ n.stability=clamp(n.stability-n.unrest*.02,3,97);
+ n.approval=clamp(n.approval-n.unrest*.012,3,97);
+ for(const c of n.cities)c.crime=clamp(c.crime+n.unrest*.006,0,100);};
+
+// ---------- persistence ----------
+const v13NewGameConquest=newGame;
+newGame=function(){
+ // Catalogue entries enlarged by a previous game must be restored before the world is rebuilt.
+ for(const[id,e]of Object.entries(CITY_CATALOG))if(e.original)CITY_CATALOG[id]={...e,cities:e.original,original:undefined};
+ v13NewGameConquest();
+ S.annexed={};S.conquest=null;
+ for(const n of S.nations)n.unrest=0;};
+const v13MigrateConquest=migrateSave;
+migrateSave=function(s){
+ s=v13MigrateConquest(s);
+ if(!s||typeof s!=='object')return s;
+ s.annexed=s.annexed||{};
+ if(s.conquest===undefined)s.conquest=null;
+ for(const n of s.nations||[])if(!Number.isFinite(n.unrest))n.unrest=0;
+ return s;};
+const v13ValidSaveConquest=validSave;
+validSave=function(s){
+ // The catalogue has to match the save being checked, or its city lists will not line up.
+ if(s&&typeof s==='object'){
+  s.annexed=s.annexed||{};
+  if(s.conquest===undefined)s.conquest=null;
+  for(const n of s.nations||[])if(!Number.isFinite(n.unrest))n.unrest=0;
+  rebuildAnnexedCatalogV13(s);}
+ v13ValidSaveConquest(s);
+ const live=new Set(s.nations.map(n=>n.id));
+ for(const[winner,losers]of Object.entries(s.annexed)){
+  if(!live.has(winner))throw Error('A conqueror that does not exist.');
+  if(!Array.isArray(losers)||losers.some(id=>live.has(id)))throw Error('An annexed state is still on the map.');}
+ if(s.conquest&&(!live.has(s.conquest.winner)||!live.has(s.conquest.loser)))throw Error('Invalid conquest offer.');
+ for(const n of s.nations)if(!Number.isFinite(n.unrest)||n.unrest<0||n.unrest>500)throw Error('Invalid occupation state.');
+ return s;};
+const v13GuideConquest=showGuide;
+showGuide=function(){
+ v13GuideConquest();const box=$('modalContent');if(!box)return;
+ box.insertAdjacentHTML('beforeend','<div class="block"><h3>Taking a country</h3>'
+ +'<p>Break an enemy army decisively and you are offered a choice: impose terms and leave the country '
+ +'standing, or <b>annex it</b>. Annexation transfers its territory, cities, people and output to you — '
+ +'the map redraws, and its cities appear in your own list.</p>'
+ +'<p>It costs 40 political capital, 30 reputation, and 22 points of relations with <em>every</em> other '
+ +'country. The occupied population is not reconciled: unrest pushes crime up and stability and approval '
+ +'down for years afterwards, easing faster if you have courts and state capacity to spend on it. It '
+ +'cannot be undone.</p>'
+ +'<p>Rival nations never annex each other. They win wars and impose terms, so the map does not quietly '
+ +'consolidate into a handful of empires while you are looking the other way.</p></div>');};
 
 newGame();initPaths();render();installMobileMap();startScreen();new ResizeObserver(resizeMap).observe(canvas);resizeMap();
 // The browser may expose WebMCP. The same validated actions drive both the UI and these tools.

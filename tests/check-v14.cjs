@@ -1,6 +1,6 @@
 // Engine invariants for Sovereign V6: difficulty modes, the debt-free world, and the V5 core
 // re-verified on the new build. Run from the project root:
-//   ELECTRON_RUN_AS_NODE=1 "/Applications/Visual Studio Code.app/Contents/MacOS/Code" tests/check-v13.cjs
+//   ELECTRON_RUN_AS_NODE=1 "/Applications/Visual Studio Code.app/Contents/MacOS/Code" tests/check-v14.cjs
 const fs=require('fs'),vm=require('vm'),assert=require('assert/strict');
 function makeGame(file){const html=fs.readFileSync(file,'utf8');
  const embedded=id=>{const m=html.match(new RegExp('<script type="application/json" id="'+id+'">([\\s\\S]*?)<\\/script>'));return m?m[1]:'';};
@@ -8,15 +8,15 @@ function makeGame(file){const html=fs.readFileSync(file,'utf8');
   'city-catalog':embedded('city-catalog'),'added-countries':embedded('added-countries'),'split-polygons':embedded('split-polygons'),'borders':embedded('borders')};
  const code=html.match(/<script>([\s\S]*?)<\/script>/)[1],els=new Map(),registry=new Map(),store=new Map();
  const ctx2d=new Proxy({isPointInPath:()=>false},{get:(t,k)=>t[k]||(()=>{}),set:(t,k,v)=>(t[k]=v,true)});
- function el(id=''){if(els.has(id))return els.get(id);const e={id,innerHTML:'',textContent:data[id]||'',value:id==='mapmode'?'political':'',hidden:id==='overlay',style:{},dataset:{},classList:{toggle(){}},tagName:'DIV',scrollTop:0,addEventListener(){},setAttribute(){},querySelectorAll(){return[]},getBoundingClientRect(){return{width:1100,height:650,left:0,top:0}},getContext(){return ctx2d},insertAdjacentHTML(_,s){this.innerHTML=s+this.innerHTML},focus(){},click(){},scrollIntoView(){},setPointerCapture(){}};els.set(id,e);return e;}
+ function el(id=''){if(els.has(id))return els.get(id);const e={id,innerHTML:'',textContent:data[id]||'',value:id==='mapmode'?'political':'',hidden:id==='overlay',style:{},dataset:{},classList:{toggle(){}},tagName:'DIV',scrollTop:0,addEventListener(){},setAttribute(){},querySelector(){return null},querySelectorAll(){return[]},getBoundingClientRect(){return{width:1100,height:650,left:0,top:0}},getContext(){return ctx2d},insertAdjacentHTML(_,s){this.innerHTML=s+this.innerHTML},focus(){},click(){},scrollIntoView(){},setPointerCapture(){}};els.set(id,e);return e;}
  const scope={console,performance,structuredClone,TextEncoder,Blob,URL,innerWidth:1440,devicePixelRatio:1,Path2D:class{moveTo(){}lineTo(){}closePath(){}},ResizeObserver:class{observe(){}},requestAnimationFrame:()=>1,setTimeout:()=>1,clearTimeout(){},setInterval:()=>1,clearInterval(){},AbortController,localStorage:{getItem:k=>store.get(k)??null,setItem(k,v){store.set(k,v)}},document:{hidden:false,modelContext:{registerTool(t){registry.set(t.name,t)}},activeElement:el('body'),getElementById:el,querySelectorAll:()=>[],addEventListener(){},createElement:()=>el('created')},window:{addEventListener(){}}};
  vm.createContext(scope);vm.runInContext(code,scope);return{run:c=>vm.runInContext(c,scope),scope,registry,els,html};}
 
-const v13=makeGame('build/v13.html'),{run}=v13;
+const v14=makeGame('build/v14.html'),{run}=v14;
 run('renderTick=()=>{}');
 
 // ---- V6 boots into Easy, which is a world with no national debt at all.
-assert.equal(run('S.version'),13);
+assert.equal(run('S.version'),14);
 assert.equal(run('S.nations.length'),204);
 assert.equal(run('S.options.difficulty'),'easy');
 assert.equal(run('S.options.noDebt'),true,'debt removal is the default');
@@ -93,7 +93,8 @@ run("newGame();applyDifficulty('hard',true);S.options.ai=true;for(let i=0;i<240;
 assert(run('S.nations.every(n=>!n.war||n.war.target===S.player&&player().war)'),'no AI nation starts a war unprompted');
 
 // ---- the start screen offers all three modes and a way in.
-run("newGame();startScreen();const startHTML=$('modalContent').innerHTML;");
+// Since V14 the game opens on the country screen; the modes are on the screen after it.
+run("newGame();startScreen();startCountryV14='BRA';rulesScreenV14();const startHTML=$('modalContent').innerHTML;");
 assert(run("['easy','medium','hard'].every(k=>startHTML.includes('data-start=\"'+k+'\"'))"),'every mode is offered');
 assert(run("startHTML.includes('Easy')&&startHTML.includes('Medium')&&startHTML.includes('Hard')"),'modes are named');
 assert(run("startHTML.includes('switched off')"),'the debt rule is stated up front');
@@ -632,18 +633,105 @@ run("newGame();applyDifficulty('hard',true);S.options.ai=true;S.options.shocks=t
 assert.equal(run('Object.keys(S.annexed).filter(id=>id!==S.player).length'), 0, 'no AI annexations');
 run('validSave(JSON.parse(JSON.stringify(S)))');
 
+// ---- V14: federal agencies, for the larger economies only.
+run("newGame();applyDifficulty('medium',true)");
+assert(run('Object.keys(AGENCIES).length>=15'), 'a set of countries run agencies');
+assert(run("!!agenciesFor('USA')&&!!agenciesFor('DEU')&&!!agenciesFor('IND')"), 'the large economies have them');
+assert(run("!agenciesFor('TUV')&&!agenciesFor('URY')&&!agenciesFor('NRU')"), 'small ones do not');
+assert(run("S.nations.every(n=>agenciesFor(n.id)?(n.agencies&&typeof n.agencies==='object'):n.agencies===null)"),
+ 'every nation is seeded consistently with whether it has agencies');
+assert(run("Object.values(AGENCIES).every(l=>l.every(([id,name,kind])=>!!id&&!!name&&!!AGENCY_KINDS[kind]))"),
+ 'every agency has a valid kind');
+assert(run("Object.values(AGENCIES).every(l=>new Set(l.map(([id])=>id)).size===l.length)"),
+ 'no duplicate agency ids within a country');
+// The panel renders for both kinds of country and never throws.
+run("S.player='USA';selected='USA'");
+assert(run("agencyPanelV14(player()).includes('Federal agencies')"), 'the panel renders for a country with agencies');
+assert(run("agencyPanelV14(player()).includes('data-agency')"), 'with controls');
+assert(run("agencyPanelV14(nation('URY')).includes('does not run standing federal agencies')"), 'and explains itself for one without');
+assert(run("!/NaN|undefined/.test(agencyPanelV14(player()))"), 'no broken values');
+
+// Budgets are the size real agencies are, not whole percents of output.
+assert(run('AGENCY_MAX <= .3'), 'a single agency cannot exceed a fraction of a percent of GDP');
+assert(run("agenciesFor('USA').length*AGENCY_MAX <= 2"), 'and all of them together stay under 2% of GDP');
+// They cost money.
+// Measured from zero, so the comparison is against no agencies at all rather than the seeded level.
+run("S.options.infiniteCapital=true;for(const k in player().agencies)player().agencies[k]=0;const bare=fiscal(player()).spending;for(const k in player().agencies)player().agencies[k]=AGENCY_MAX;");
+assert(run('fiscal(player()).spending > bare'), 'funding agencies costs the budget');
+assert(run(`Math.abs(fiscal(player()).spending-bare-agenciesFor('USA').length*AGENCY_MAX)<1e-6`), 'by exactly what they are funded');
+
+// And they do something measurable — measured against a control, not in absolute terms.
+run(`window.trial=(lvl)=>{newGame();applyDifficulty('medium',true);S.player='USA';selected='USA';
+ S.options.infiniteCapital=true;S.options.ai=false;S.options.shocks=false;
+ for(const k in player().agencies)player().agencies[k]=lvl;
+ const b={human:player().human,clean:player().clean,crime:player().cities[0].crime,tfp:player().tfp};
+ for(let i=0;i<120;i++)simulateMonth();
+ return {human:player().human-b.human,clean:player().clean-b.clean,crime:player().cities[0].crime-b.crime,tfp:player().tfp/b.tfp};}`);
+run("window.none=window.trial(0);window.full=window.trial(AGENCY_MAX)");
+assert(run('window.full.human > window.none.human'), 'funding raises human capital relative to not funding');
+assert(run('window.full.clean > window.none.clean'), 'and the clean score');
+assert(run('window.full.crime < window.none.crime'), 'and lowers crime');
+assert(run('window.full.tfp > window.none.tfp'), 'and productivity');
+run('validSave(JSON.parse(JSON.stringify(S)))');
+
+// Agency state is validated.
+run("newGame();const ag=JSON.parse(JSON.stringify(S))");
+for (const [name, mutation] of [
+ ['a budget beyond the cap', 'b.nations.find(n=>n.id==="USA").agencies.nasa=9'],
+ ['a negative budget', 'b.nations.find(n=>n.id==="USA").agencies.nasa=-1'],
+ ['an agency that does not exist', 'b.nations.find(n=>n.id==="USA").agencies.zzz=0.1'],
+ ['agencies on a country without them', 'b.nations.find(n=>n.id==="URY").agencies={x:0.1}'],
+ ['missing agency budgets', 'b.nations.find(n=>n.id==="USA").agencies=null'],
+]) assert.throws(() => run(`(()=>{const b=JSON.parse(JSON.stringify(ag));${mutation};validSave(b)})()`), undefined, name+' must be rejected');
+
+// States created by an era or by history are seeded too.
+run("newGame();applyEra('e1970')");
+assert(run("S.nations.every(n=>agenciesFor(n.id)?!!n.agencies:n.agencies===null)"), 'an era seeds agencies consistently');
+run('validSave(JSON.parse(JSON.stringify(S)))');
+run("while(S.month<300)simulateMonth()");
+assert(run("S.nations.every(n=>agenciesFor(n.id)?!!n.agencies:n.agencies===null)"), 'and so do the historical events');
+run('validSave(JSON.parse(JSON.stringify(S)))');
+
+// ---- you choose the country you play.
+run("newGame()");
+// The game opens on a country screen of its own, then the rules screen.
+assert(run("typeof countryScreenV14==='function'&&typeof rulesScreenV14==='function'"), 'there are two start screens');
+run("startScreen()");
+assert(run("$('modalContent').innerHTML.includes('data-pick=')"), 'the first screen lists countries to pick');
+assert(run("$('modalContent').innerHTML.includes('countrySearch')"), 'and can be searched');
+assert(run("(countryListV14('').match(/data-pick=/g)||[]).length===S.nations.length"), 'every country is offered');
+assert(run("(countryListV14('japan').match(/data-pick=/g)||[]).length===1"), 'search narrows it');
+assert(run("countryListV14('zzzzz').includes('No country matches')"), 'and says so when nothing matches');
+// Picking one leads to the rules screen, which names it and offers a way back.
+run("startCountryV14='JPN';rulesScreenV14()");
+assert(run("$('modalContent').innerHTML.includes('Change country')"), 'the second screen can go back');
+assert(run("$('modalContent').innerHTML.includes('data-start=')"), 'and offers the difficulty modes');
+assert(run("$('modalContent').innerHTML.includes('data-era-start=')"), 'and the eras');
+assert(run("typeof beginAsV14==='function'"), 'the chooser has a way to apply itself');
+run("beginAsV14('JPN')");
+assert.equal(run('S.player'), 'JPN', 'the chosen country is the one you lead');
+assert.equal(run('player().name'), 'Japan');
+assert(run("S.events.some(e=>e.title==='You take office')"), 'and it is announced');
+assert(run("!!player().agencies"), 'Japan runs agencies');
+run("beginAsV14('TUV')");
+assert.equal(run('S.player'), 'TUV', 'a small country can be chosen too');
+assert.equal(run('player().agencies'), null, 'and correctly has none');
+run('validSave(JSON.parse(JSON.stringify(S)));simulateMonth()');
+run("beginAsV14('nowhere')");
+assert.equal(run('S.player'), 'TUV', 'an unknown country is refused');
+
 // ---- earlier saves migrate. A V5 world keeps its debt, so it arrives on Medium, not Easy.
 const v5=makeGame('build/v5.html');
-v13.scope.legacyJSON=v5.run("S.month=30;JSON.stringify(S)");
+v14.scope.legacyJSON=v5.run("S.month=30;JSON.stringify(S)");
 run('loadSave(legacyJSON)');
-assert.equal(run('S.version'),13);assert.equal(run('S.month'),30);
+assert.equal(run('S.version'),14);assert.equal(run('S.month'),30);
 assert.equal(run('S.options.difficulty'),'medium','a V5 world with debt migrates to Medium');
 assert.equal(run('S.options.noDebt'),false,'migration never silently erases an existing debt stock');
 run('validSave(JSON.parse(JSON.stringify(S)));simulateMonth()');
-for(const [label,file] of [['V7','build/v13.html'],['V6','build/v6.html'],['V4','build/v4.html'],['V3','src/base/sovereign-v3.html'],['V1','src/base/sovereign-v1.html']]){
- const old=makeGame(file);v13.scope.legacyJSON=old.run('S.month=9;JSON.stringify(S)');
+for(const [label,file] of [['V7','build/v14.html'],['V6','build/v6.html'],['V4','build/v4.html'],['V3','src/base/sovereign-v3.html'],['V1','src/base/sovereign-v1.html']]){
+ const old=makeGame(file);v14.scope.legacyJSON=old.run('S.month=9;JSON.stringify(S)');
  run('loadSave(legacyJSON)');
- assert.equal(run('S.version'),13,label+' migrates to 13');
+ assert.equal(run('S.version'),14,label+' migrates to 14');
  assert.equal(run('S.nations.length'),204,label+' gains the added countries');
  assert(run("!!DIFFICULTY[S.options.difficulty]&&typeof S.options.noDebt==='boolean'&&!!ERAS[S.options.era]&&Number.isInteger(S.startYear)"),label+' gains difficulty and era rules');
  run('validSave(JSON.parse(JSON.stringify(S)));simulateMonth()');
@@ -666,14 +754,14 @@ for(const [name,mutation] of [
  ['renamed city','b.nations[0].cities[0].name="<script>"'],
 ])assert.throws(()=>run(`(()=>{const b=JSON.parse(JSON.stringify(good));${mutation};validSave(b)})()`),undefined,name+' must be rejected');
 
-const api=v13.registry.get('advance_simulation'),month=run('S.month');
+const api=v14.registry.get('advance_simulation'),month=run('S.month');
 api.execute({months:2});assert.equal(run('S.month'),month+2);
 
-console.log(JSON.stringify({status:'PASS',version:13,nations:204,cities:1198,
+console.log(JSON.stringify({status:'PASS',version:14,nations:204,cities:1198,
  defaultMode:'easy',defaultNoDebt:true,
  policies:run('POLICY.length'),programs:run('PROGRAMS.length'),
- fileBytes:Buffer.byteLength(v13.html),lastTickMs:+run('perf').toFixed(2),
- checks:['boots into Easy with debt removed','beating a country lets you annex it','annexed territory, cities, people and output transfer','an annexed world survives save and reload','a fresh game restores the original catalogue','rivals never annex each other','declaring war produces a usable war record','the war room never throws and never prints NaN','a malformed war record is repaired, not fatal','cities can be taken and taken back','no city is held by both sides','history happens as you play: 1971 through 2011','the map is never left with orphaned territory','debt can be frozen rather than removed','unlimited city construction queue','ideology presets fitted to the budget','rival nations fight their own wars','offensives can be aimed at a named city','seven more programmes','land borders match reality: China 14, Germany 9, Brazil 10','a war with a neighbour opens a front on that border','the front moves and supply falls as it advances','doctrine and commitment change the outcome','no shared border means a limited war','borders never move and no country is annexed','relief operations are repeatable with no waiting period','relief still grants crisis protection','Germany, Vietnam and Yemen are divided in the eras they were','each half owns its own polygon','divided cities: East and West Berlin, Hanoi and Saigon','countries reunify in the eras they did','the map follows the era: USSR, Yugoslavia, Czechoslovakia','states not yet independent are absent','period place names, country and city','merged states hold their members territory','no successor coexists with its predecessor','era-aware name and city validation','eras rebuild the world at 1970/1985/2000/2026','pegged eras keep a floating anchor','construction can be skipped','elections, war, lag and volatility rules','generated dispatches are varied and bounded','modes strictly ordered easy→hard',
+ fileBytes:Buffer.byteLength(v14.html),lastTickMs:+run('perf').toFixed(2),
+ checks:['boots into Easy with debt removed','federal agencies only for the larger economies','agency budgets are realistically scaled and cost the budget','funding agencies measurably beats not funding them','agency state is validated and era-consistent','you choose which country you play','beating a country lets you annex it','annexed territory, cities, people and output transfer','an annexed world survives save and reload','a fresh game restores the original catalogue','rivals never annex each other','declaring war produces a usable war record','the war room never throws and never prints NaN','a malformed war record is repaired, not fatal','cities can be taken and taken back','no city is held by both sides','history happens as you play: 1971 through 2011','the map is never left with orphaned territory','debt can be frozen rather than removed','unlimited city construction queue','ideology presets fitted to the budget','rival nations fight their own wars','offensives can be aimed at a named city','seven more programmes','land borders match reality: China 14, Germany 9, Brazil 10','a war with a neighbour opens a front on that border','the front moves and supply falls as it advances','doctrine and commitment change the outcome','no shared border means a limited war','borders never move and no country is annexed','relief operations are repeatable with no waiting period','relief still grants crisis protection','Germany, Vietnam and Yemen are divided in the eras they were','each half owns its own polygon','divided cities: East and West Berlin, Hanoi and Saigon','countries reunify in the eras they did','the map follows the era: USSR, Yugoslavia, Czechoslovakia','states not yet independent are absent','period place names, country and city','merged states hold their members territory','no successor coexists with its predecessor','era-aware name and city validation','eras rebuild the world at 1970/1985/2000/2026','pegged eras keep a floating anchor','construction can be skipped','elections, war, lag and volatility rules','generated dispatches are varied and bounded','modes strictly ordered easy→hard',
   'thirty years of deficits create no debt','no interest or debt service when off',
   'switching mode never restarts the world','harder modes restore and accumulate debt',
   'returning to Easy clears the stock','hand-edited rules mark a mode customised',

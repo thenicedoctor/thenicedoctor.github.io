@@ -2,5 +2,6 @@
 __pycache__/
 *.pyc
 
-# Build intermediates. The shipped artifacts in dist/ and web/ are committed.
-build/
+# Build intermediates only. Anchored to the repository root so that src/build/,
+# which holds the patch scripts that generate everything, stays tracked.
+/build/

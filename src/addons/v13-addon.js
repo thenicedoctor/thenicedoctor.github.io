@@ -144,3 +144,169 @@ showGuide=function(){
  +'the interface was drawn before it was filled in, so drawing it threw, the front was never opened, '
  +'and the war showed NaN in every field for the rest of the game. Records are now created complete, '
  +'the panel tolerates one that is not, and an affected save is repaired on load.</p></div>');};
+
+// ---------- conquest ----------
+// Beating a country decisively now lets you take it, not merely bill it. Annexation transfers its
+// territory, cities, people and output; it also buys you an angry world and a restive population.
+// The AI never annexes — a rival that wins imposes terms — so the map cannot quietly collapse into
+// two or three blobs while you are looking elsewhere.
+function annexableV13(){return S.conquest&&S.conquest.winner===S.player&&nation(S.conquest.loser)?S.conquest:null;}
+// Cities of an annexed country are appended to the conqueror's catalogue entry, so everything
+// downstream — the template, the panel, save validation — keeps working unchanged.
+function rebuildAnnexedCatalogV13(state){
+ const record=(state||S)?.annexed||{};
+ for(const[winner,losers]of Object.entries(record)){
+  const base=CITY_CATALOG[winner];if(!base)continue;
+  const own=base.original||base.cities;
+  const extra=[];
+  for(const id of losers){const e=CITY_CATALOG[id];if(e)extra.push(...(e.original||e.cities));}
+  const seen=new Set(),merged=[];
+  for(const name of [...own,...extra]){const k=cityKey(name);if(seen.has(k))continue;seen.add(k);merged.push(name);}
+  CITY_CATALOG[winner]={...base,original:own,cities:merged};}}
+// Rebuild the winner's city list from the enlarged catalogue, keeping what was already built.
+function recityV13(n){
+ const old=n.cities||[],used=new Set();
+ n.cities=cityTemplate(n).map(c=>{
+  const prev=old.find(x=>!used.has(x)&&cityKey(x.name)===cityKey(c.name));
+  if(prev){used.add(prev);Object.assign(c.levels,prev.levels);
+   c.queue=prev.queue.map(q=>({...q}));c.crime=prev.crime;c.satisfaction=prev.satisfaction;
+   c.management={...prev.management};}
+  return c;});}
+
+function annexV13(winnerId,loserId){
+ const w=nation(winnerId),l=nation(loserId);
+ if(!w||!l||w===l)return false;
+ // Everything the defeated state held becomes the conqueror's.
+ for(const[poly,owner]of Object.entries(S.territory))if(owner===loserId)S.territory[poly]=winnerId;
+ S.territory[loserId]=winnerId;
+ S.annexed=S.annexed||{};
+ S.annexed[winnerId]=[...(S.annexed[winnerId]||[]),loserId,...(S.annexed[loserId]||[])];
+ delete S.annexed[loserId];
+ rebuildAnnexedCatalogV13();
+ w.pop+=l.pop;w.gdp+=l.gdp;
+ if(!S.options.noDebt)w.debt+=l.debt;
+ w.forces={army:w.forces.army+l.forces.army*.25,navy:w.forces.navy+l.forces.navy*.25,air:w.forces.air+l.forces.air*.25};
+ w.military=w.forces.army+w.forces.navy+w.forces.air;
+ // Occupation is not free: an unwilling population, a wrecked economy and a hostile world.
+ w.stability=clamp(w.stability-18,3,97);
+ w.approval=clamp(w.approval-10,3,97);
+ w.reputation=clamp((w.reputation??60)-30,0,100);
+ w.unrest=(w.unrest||0)+l.pop/Math.max(.01,w.pop)*45;
+ for(const o of S.nations)if(o.id!==w.id)setRelation(w.id,o.id,relation(w.id,o.id)-22);
+ recityV13(w);
+ for(const c of w.cities)if(!(CITY_CATALOG[loserId]?.original||CITY_CATALOG[loserId]?.cities||[]).every(n2=>cityKey(n2)!==cityKey(c.name))){
+  c.crime=clamp(c.crime+24,0,100);c.satisfaction=clamp(c.satisfaction-34,0,100);}
+ // The defeated state leaves the board, and the world's bookkeeping with it.
+ S.nations=S.nations.filter(n=>n.id!==loserId);
+ const live=new Set(S.nations.map(n=>n.id));
+ for(const n of S.nations)if(n.war&&!live.has(n.war.target))n.war=null;
+ S.agreements=(S.agreements||[]).filter(p=>live.has(p.a)&&live.has(p.b));
+ S.embargoes=(S.embargoes||[]).filter(x=>live.has(x.from)&&live.has(x.to));
+ S.tradeDeals=(S.tradeDeals||[]).filter(d=>live.has(d.from)&&live.has(d.to));
+ S.relations=Object.fromEntries(Object.entries(S.relations||{}).filter(([k])=>k.split(':').every(x=>live.has(x))));
+ if(selected===loserId)selected=winnerId;
+ syncDiplomacy();rebuildNeighboursV12();initPaths();requestDraw();refreshWorld();
+ addEvent(l.name+' is annexed',
+  w.name+' takes formal control of '+l.name+'. Its territory, cities and people are now governed from '
+  +w.name+'. The world has noticed: relations have fallen everywhere and the occupied population is not reconciled.','security');
+ S.conquest=null;
+ return true;}
+
+// A decisive victory opens a choice: take the country, or take terms.
+function conquestPromptV13(){
+ const c=annexableV13();if(!c)return;
+ const l=nation(c.loser);if(!l)return;
+ modal('You have beaten '+escapeHTML(l.name),
+  '<p>'+escapeHTML(l.name)+'’s army has been broken. You can impose terms and leave it standing, or '
+  +'annex it outright and govern its territory yourself.</p>'
+  +'<p><b>Annexation</b> adds its '+l.pop.toFixed(1)+'m people, '+money(l.gdp)+' of output and '
+  +l.cities.length+' cities to your own. It also costs you 30 reputation, drops relations with every '
+  +'other country by 22, and leaves an occupied population that pushes crime up and stability down '
+  +'for years. There is no way to undo it.</p>'
+  +'<button class="danger full" id="doAnnex">Annex '+escapeHTML(l.name)+' · 40 capital</button>'
+  +'<button class="full" id="doTerms">Impose terms and leave it standing</button>');
+ $('doAnnex').onclick=()=>{
+  const n=player();
+  if(!canSpend(n,40)){toast('Annexation requires 40 political capital.');return;}
+  spendCapital(n,40);annexV13(S.player,c.loser);closeModal();render();};
+ $('doTerms').onclick=()=>{S.conquest=null;closeModal();render();toast('Terms imposed. '+l.name+' remains a country.');};}
+
+// Offered when the war ends, and still available from Military until you decide.
+const v13ResolveWarsConquest=resolveWars;
+resolveWars=function(){
+ const before=new Map(S.nations.filter(n=>n.war).map(n=>[n.id,n.war.target]));
+ v13ResolveWarsConquest();
+ for(const[id,target]of before){
+  const w=nation(id),l=nation(target);
+  if(!w||!l||w.war||l.war)continue;
+  // Decisive only: an exhausted stalemate does not hand you a country.
+  const beaten=l.forces.army<w.forces.army*.2||l.stability<18;
+  if(id===S.player&&beaten&&!S.conquest){S.conquest={winner:S.player,loser:target};}}
+ if(annexableV13()&&!playing)conquestPromptV13();};
+const v13MilitaryConquest=militaryPanel;
+militaryPanel=function(n){
+ const c=annexableV13();
+ const banner=c&&n.id===S.player
+  ?'<div class="block warroom"><h3>'+escapeHTML(nation(c.loser).name)+' is beaten</h3>'
+   +'<p>Its army is broken. Annex it and its territory, cities and people become yours — at the cost of '
+   +'your standing everywhere and an occupied population that will not settle for years.</p>'
+   +'<button class="danger full" data-action="conquest">Decide what to do with '+escapeHTML(nation(c.loser).name)+'</button></div>'
+  :'';
+ return banner+v13MilitaryConquest(n);};
+Object.assign(actions,{conquest:()=>conquestPromptV13()});
+
+// Occupied territory settles slowly, and drags on the state that holds it.
+const v13TickNationConquest=tickV4Nation;
+tickV4Nation=function(n){
+ v13TickNationConquest(n);
+ if(!n.unrest)return;
+ n.unrest=Math.max(0,n.unrest-.35-n.policies.justice*.004-n.capacity*.003);
+ n.stability=clamp(n.stability-n.unrest*.02,3,97);
+ n.approval=clamp(n.approval-n.unrest*.012,3,97);
+ for(const c of n.cities)c.crime=clamp(c.crime+n.unrest*.006,0,100);};
+
+// ---------- persistence ----------
+const v13NewGameConquest=newGame;
+newGame=function(){
+ // Catalogue entries enlarged by a previous game must be restored before the world is rebuilt.
+ for(const[id,e]of Object.entries(CITY_CATALOG))if(e.original)CITY_CATALOG[id]={...e,cities:e.original,original:undefined};
+ v13NewGameConquest();
+ S.annexed={};S.conquest=null;
+ for(const n of S.nations)n.unrest=0;};
+const v13MigrateConquest=migrateSave;
+migrateSave=function(s){
+ s=v13MigrateConquest(s);
+ if(!s||typeof s!=='object')return s;
+ s.annexed=s.annexed||{};
+ if(s.conquest===undefined)s.conquest=null;
+ for(const n of s.nations||[])if(!Number.isFinite(n.unrest))n.unrest=0;
+ return s;};
+const v13ValidSaveConquest=validSave;
+validSave=function(s){
+ // The catalogue has to match the save being checked, or its city lists will not line up.
+ if(s&&typeof s==='object'){
+  s.annexed=s.annexed||{};
+  if(s.conquest===undefined)s.conquest=null;
+  for(const n of s.nations||[])if(!Number.isFinite(n.unrest))n.unrest=0;
+  rebuildAnnexedCatalogV13(s);}
+ v13ValidSaveConquest(s);
+ const live=new Set(s.nations.map(n=>n.id));
+ for(const[winner,losers]of Object.entries(s.annexed)){
+  if(!live.has(winner))throw Error('A conqueror that does not exist.');
+  if(!Array.isArray(losers)||losers.some(id=>live.has(id)))throw Error('An annexed state is still on the map.');}
+ if(s.conquest&&(!live.has(s.conquest.winner)||!live.has(s.conquest.loser)))throw Error('Invalid conquest offer.');
+ for(const n of s.nations)if(!Number.isFinite(n.unrest)||n.unrest<0||n.unrest>500)throw Error('Invalid occupation state.');
+ return s;};
+const v13GuideConquest=showGuide;
+showGuide=function(){
+ v13GuideConquest();const box=$('modalContent');if(!box)return;
+ box.insertAdjacentHTML('beforeend','<div class="block"><h3>Taking a country</h3>'
+ +'<p>Break an enemy army decisively and you are offered a choice: impose terms and leave the country '
+ +'standing, or <b>annex it</b>. Annexation transfers its territory, cities, people and output to you — '
+ +'the map redraws, and its cities appear in your own list.</p>'
+ +'<p>It costs 40 political capital, 30 reputation, and 22 points of relations with <em>every</em> other '
+ +'country. The occupied population is not reconciled: unrest pushes crime up and stability and approval '
+ +'down for years afterwards, easing faster if you have courts and state capacity to spend on it. It '
+ +'cannot be undone.</p>'
+ +'<p>Rival nations never annex each other. They win wars and impose terms, so the map does not quietly '
+ +'consolidate into a handful of empires while you are looking the other way.</p></div>');};
