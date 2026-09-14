@@ -1,4 +1,5 @@
 User-agent: *
-Allow: /
+Disallow: /dist/
+Disallow: /src/
 
 Sitemap: https://thenicedoctor.github.io/sitemap.xml

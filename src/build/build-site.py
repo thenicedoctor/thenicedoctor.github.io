@@ -4,13 +4,12 @@ Same convention as the game build scripts: exact-string replacements, every anch
 nothing hand-edited. Re-run to reproduce site/ byte for byte.
 """
 from pathlib import Path
-import re, datetime, hashlib
+import re, datetime, hashlib, json, urllib.request
+from xml.sax.saxutils import escape
 
 ROOT = Path(__file__).resolve().parents[2]
 SITE = ROOT          # a user Pages site is served from the repository root
 ORIGIN = 'https://thenicedoctor.github.io'
-# The sitemap's lastmod must reflect when the site actually changed. A pinned date
-# republishes "nothing new since" on every deploy, which suppresses recrawling.
 TODAY = datetime.date.today().isoformat()
 
 (SITE / 'play').mkdir(parents=True, exist_ok=True)
@@ -61,18 +60,62 @@ rep('</style>', '.homelink{text-decoration:none;color:inherit}.homelink:hover st
 (SITE / 'play' / 'index.html').write_text(game)
 
 # --- crawl files ----------------------------------------------------------------------
+# dist/ and src/ hold every earlier build of the game. Pages serves them, but they are
+# near-copies of /play/ with no canonical link, so keep crawlers on the real page.
 (SITE / 'robots.txt').write_text(f'''User-agent: *
-Allow: /
+Disallow: /dist/
+Disallow: /src/
 
 Sitemap: {ORIGIN}/sitemap.xml
 ''')
 
-pages = [('/', '1.0', 'weekly'), ('/play/', '0.9', 'weekly')]
+# --- sitemap --------------------------------------------------------------------------
+# Crawlers only read robots.txt and the sitemap at the domain root, so this file has to
+# speak for every page on the domain, including project sites published from other
+# repositories under the same account, whose own sitemaps nothing points to.
+#
+# Only <loc>, <lastmod> and images are emitted. Google and Bing both ignore <changefreq>
+# and <priority>; lastmod is used, but only while it stays accurate.
+
+def local_lastmod(rel):
+    """The day this page last changed: today if this build changed it, else its last commit."""
+    committed = subprocess.run(['git', 'show', f'HEAD:{rel}'], cwd=ROOT, capture_output=True).stdout
+    if committed and committed == (SITE / rel).read_bytes():
+        return subprocess.run(['git', 'log', '-1', '--format=%cs', '--', rel], cwd=ROOT,
+                              capture_output=True, text=True).stdout.strip() or TODAY
+    return TODAY
+
+def project_lastmod(repo, path='index.html'):
+    """Last commit to a page in another public repository; None if GitHub is unreachable."""
+    url = f'https://api.github.com/repos/thenicedoctor/{repo}/commits?path={path}&per_page=1'
+    try:
+        with urllib.request.urlopen(urllib.request.Request(url, headers={'User-Agent': 'site-build'}),
+                                    timeout=10) as r:
+            return json.load(r)[0]['commit']['committer']['date'][:10]
+    except (OSError, ValueError, KeyError, IndexError) as e:
+        print(f'  note: no lastmod for /{repo}/ ({e.__class__.__name__}); listed without one')
+        return None
+
+# (path, lastmod, images on the page)
+sitemap_pages = [
+    ('/',                  local_lastmod('index.html'),         ['/hero.png']),
+    ('/play/',             local_lastmod('play/index.html'),    []),
+    ('/communist-values/', project_lastmod('communist-values'), []),
+]
+
+def sitemap_entry(path, lastmod, images):
+    parts = [f'<loc>{escape(ORIGIN + path)}</loc>']
+    if lastmod:
+        parts.append(f'<lastmod>{lastmod}</lastmod>')
+    parts += [f'<image:image><image:loc>{escape(ORIGIN + i)}</image:loc></image:image>' for i in images]
+    return '  <url>' + ''.join(parts) + '</url>\n'
+
 (SITE / 'sitemap.xml').write_text(
- '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
- + ''.join(f'<url><loc>{ORIGIN}{p}</loc><lastmod>{TODAY}</lastmod>'
-           f'<changefreq>{f}</changefreq><priority>{pr}</priority></url>\n' for p, pr, f in pages)
- + '</urlset>\n')
+    '<?xml version="1.0" encoding="UTF-8"?>\n'
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n'
+    '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'
+    + ''.join(sitemap_entry(*page) for page in sitemap_pages)
+    + '</urlset>\n')
 
 # IndexNow: a hosted key lets Bing, Yandex and others accept URL submissions without an account.
 key = hashlib.sha256(b'sovereign-thenicedoctor-2026-09-09').hexdigest()[:32]
