@@ -4,6 +4,41 @@ Versions are the save-format version (`S.version`). Each is produced by its own 
 the previous version's output, and each bumps `newGame`, `validSave` and `migrateSave` together so
 older saves keep loading.
 
+## v15 — Budgets that balance, and building everywhere at once
+
+**Fixed: choosing an ideology opened a deficit, every time.** Two faults stacked. Every version from
+V4 on added programmes with a cost and no revenue behind them, so the median country started the game
+near a 9% deficit before the player had done anything. And V12's budget fit for ideology presets was
+attached in `render()`, but opening the Ideologies tab only calls `renderPanel()`, which rebinds the
+preset buttons without it — so in ordinary play the fit never ran at all.
+
+- **Budgets start sustainable.** A new world seeds each country's broad tax rate so it opens near a
+  small deficit: about 0.5% of GDP on Easy, 1.5% on Medium, 3% on Hard. It is the same lever the AI
+  already uses to repair its own budget. Revenue closes the gap rather than spending because, in
+  twenty-year runs of the whole world, trimming spending to the same balance cost 0.7 points of growth
+  a year and five points of human development, while raising revenue left both unchanged and halved
+  the debt built up. Programmes are trimmed only where taxes are already at their ceiling (in practice,
+  merged Yugoslavia in the earlier eras), and defence never is. Choosing a different mode or era before
+  the first month re-seeds cleanly; after it, the budget is yours. Saved worlds keep their budgets.
+- **Ideology presets are funded.** A preset now arrives with the broad tax rate that pays for it, so
+  the balance stays where it was — or recovers to the sustainable level if it was already worse.
+  Smaller-state presets cut the rate instead. Tax structure, brackets, institutions and civil liberties
+  are untouched, and Sandbox can still stage presets exactly as written.
+- **Ten new reforms:** universal basic income, paid parental leave, tuition-free higher education, a
+  carbon price, an annual wealth tax, revenue administration, fuel and energy subsidies, rent regulation,
+  drug policy, and a **fiscal rule** that raises taxes a quarter-point a month while the deficit at
+  target policies is above a ceiling you choose. Each starts at a setting with no cost and no effect,
+  and each ideology takes its own position on them. Every effect was checked against a control run:
+  a 4% basic income cut inequality by 5.6 points and raised approval by 4.3 over fifteen years, while
+  lowering participation by two points; rent regulation cut rent burdens by 6.6 points and housing
+  supply by 11.
+- **Build in all cities.** The Cities tab can queue a development in every city at once as one national
+  decision: 6 political capital for the first city and 2 for each after, instead of 6 each. Cities at
+  level 5 or with a full queue are skipped, and every project is queued exactly as a single-city
+  approval would be, respecting instant construction and unlimited queues.
+- The V12 guide claimed that borders never move, untrue since V13, and that presets never touch taxes.
+  Both sentences are corrected.
+
 ## v14 — Federal agencies, and choosing who you are
 
 - **The game now opens on a country screen.** All 204 countries, searchable and sorted by size,

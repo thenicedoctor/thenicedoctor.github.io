@@ -24,7 +24,7 @@ SRC = ROOT / 'src'
 
 for script in ('make-og.py', 'make-hero.py'):
     subprocess.run(['python3', str(Path(__file__).resolve().parent / script)], check=True)
-game = (ROOT / 'dist' / 'sovereign-v14.html').read_text()
+game = (ROOT / 'dist' / 'sovereign-v15.html').read_text()
 
 def rep(a, b, count=1):
     global game
@@ -52,9 +52,9 @@ head = f'''<link rel="canonical" href="{ORIGIN}/play/">
 rep('</head>', head)
 
 # --- the brand mark links home, so /play/ is not a dead end for crawlers or readers ---
-rep('<header><div class="brand"><div class="logo"><span>♜</span></div><div><strong>SOVEREIGN</strong><div class="eyebrow">Political sandbox · V14</div></div></div>',
+rep('<header><div class="brand"><div class="logo"><span>♜</span></div><div><strong>SOVEREIGN</strong><div class="eyebrow">Political sandbox · V15</div></div></div>',
     '<header><a class="brand homelink" href="/" title="Sovereign home"><div class="logo"><span>♜</span></div>'
-    '<div><strong>SOVEREIGN</strong><div class="eyebrow">Political sandbox · V14</div></div></a>')
+    '<div><strong>SOVEREIGN</strong><div class="eyebrow">Political sandbox · V15</div></div></a>')
 rep('</style>', '.homelink{text-decoration:none;color:inherit}.homelink:hover strong{color:var(--accent)}\n</style>')
 
 (SITE / 'play' / 'index.html').write_text(game)

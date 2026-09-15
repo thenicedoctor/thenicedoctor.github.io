@@ -79,11 +79,11 @@ area.
 
 ```
 src/base/      sovereign-v3.html      the artifact the build chain starts from
-src/addons/    v4…v14-addon.js         each version's new behaviour, layered by wrapping functions
-src/build/     build-v4…v14.py         exact-string patch scripts, one per version
+src/addons/    v4…v15-addon.js         each version's new behaviour, layered by wrapping functions
+src/build/     build-v4…v15.py         exact-string patch scripts, one per version
 src/data/      map polygons, city catalogue, provenance notes
-tests/         check-game…check-v14.cjs   engine invariants, run in a vm sandbox
-dist/          sovereign-v14.html      the built game
+tests/         check-game…check-v15.cjs   engine invariants, run in a vm sandbox
+dist/          sovereign-v15.html      the built game
 docs/          architecture, economic model, modelling limits, CI workflows
 index.html     the published landing page  (a user Pages site, served from the root)
 play/          the published game
@@ -106,7 +106,8 @@ python3 src/build/build-v10.py   # repeatable debt relief
 python3 src/build/build-v11.py   # wars fought on the real border
 python3 src/build/build-v12.py   # history as you play, rival wars, objectives
 python3 src/build/build-v13.py   # contested cities, conquest, war crash fix
-python3 src/build/build-v14.py   # federal agencies, country selection  -> dist/
+python3 src/build/build-v14.py   # federal agencies, country selection
+python3 src/build/build-v15.py   # funded budgets, ten reforms, build in all cities  -> dist/
 python3 src/build/build-site.py  # assembles the published site at the repository root
 ```
 
@@ -122,7 +123,7 @@ state coexists with its predecessor, save migration from every earlier version, 
 stability run in each difficulty mode and era.
 
 ```bash
-node tests/check-v14.cjs
+node tests/check-v15.cjs
 for f in tests/check-*.cjs; do node "$f" || exit 1; done
 ```
 
